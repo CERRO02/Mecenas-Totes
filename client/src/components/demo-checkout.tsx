@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useCart } from '@/hooks/use-cart';
+import { useAuth } from '@/hooks/use-auth';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,12 +18,21 @@ interface DemoCheckoutProps {
 export function DemoCheckout({ customerEmail, setCustomerEmail }: DemoCheckoutProps) {
   const { toast } = useToast();
   const { totalPrice, clearCart } = useCart();
+  const { user, isAuthenticated } = useAuth();
   const [, setLocation] = useLocation();
   const [isProcessing, setIsProcessing] = useState(false);
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [cardName, setCardName] = useState('');
+
+  // Pre-populate user data if authenticated
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      setCustomerEmail(user.email);
+      setCardName(`${user.firstName} ${user.lastName}`);
+    }
+  }, [isAuthenticated, user, setCustomerEmail]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

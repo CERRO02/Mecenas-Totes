@@ -1,10 +1,11 @@
 import { useCart } from '@/hooks/use-cart';
+import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { useLocation } from 'wouter';
-import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, User } from 'lucide-react';
 
 export default function CartSidebar() {
   const { 
@@ -17,11 +18,16 @@ export default function CartSidebar() {
     setIsCartOpen,
     isLoading 
   } = useCart();
+  const { isAuthenticated } = useAuth();
   const [, setLocation] = useLocation();
 
   const handleCheckout = () => {
     setIsCartOpen(false);
-    setLocation('/checkout');
+    if (isAuthenticated) {
+      setLocation('/checkout');
+    } else {
+      setLocation('/login');
+    }
   };
 
   const handleContinueShopping = () => {
@@ -148,7 +154,14 @@ export default function CartSidebar() {
                   onClick={handleCheckout}
                   className="w-full bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
                 >
-                  Checkout with Stripe
+                  {isAuthenticated ? (
+                    "Proceed to Checkout"
+                  ) : (
+                    <>
+                      <User className="h-4 w-4 mr-2" />
+                      Login to Checkout
+                    </>
+                  )}
                 </Button>
                 
                 <Button
