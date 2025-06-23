@@ -53,7 +53,7 @@ export default function Home() {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-2 border-white hover:bg-white hover:text-canvasco-primary text-white px-8 py-4 text-lg font-semibold"
+                  className="border-2 border-canvasco-accent bg-canvasco-accent hover:bg-canvasco-accent/90 text-canvasco-primary hover:text-white px-8 py-4 text-lg font-semibold"
                   asChild
                 >
                   <Link href="/artists">Meet Our Artists</Link>
