@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useCart } from '@/hooks/use-cart';
-import { Palette, Menu, ShoppingBag } from 'lucide-react';
+import { useAuth } from '@/hooks/use-auth';
+import { Palette, Menu, ShoppingBag, User, LogOut } from 'lucide-react';
 
 export default function Header() {
   const [location] = useLocation();
   const { itemCount, setIsCartOpen } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -49,8 +52,9 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Cart and Mobile Menu */}
+          {/* Cart, User Menu and Mobile Menu */}
           <div className="flex items-center space-x-4">
+            {/* Cart Button */}
             <Button
               variant="ghost"
               size="icon"
@@ -64,6 +68,30 @@ export default function Header() {
                 </span>
               )}
             </Button>
+
+            {/* User Menu */}
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="text-canvasco-neutral hover:text-canvasco-primary">
+                    <User className="h-6 w-6" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem disabled>
+                    {user?.firstName} {user?.lastName}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={logout}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button variant="ghost" asChild>
+                <Link href="/login">Login</Link>
+              </Button>
+            )}
 
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
