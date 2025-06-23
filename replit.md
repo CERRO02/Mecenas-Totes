@@ -108,8 +108,23 @@ CanvasCo is a full-stack e-commerce application that connects sustainable fashio
 ## Changelog
 
 Changelog:
-- June 23, 2025. Initial setup
+- June 23, 2025: Initial setup
+- June 23, 2025: Complete CanvasCo e-commerce website with demo mode for users under 18
+
+## Recent Changes
+
+✓ Created complete CanvasCo e-commerce website
+✓ Built product catalog with eco-friendly tote bags
+✓ Implemented artist spotlight system with weekly featured artists
+✓ Added shopping cart functionality with session storage
+✓ Created demo checkout mode for users without Stripe credentials
+✓ Set up responsive design for mobile and desktop
+✓ Implemented newsletter subscription system
+
+→ Website is fully functional in demo mode
+→ Ready for Stripe integration when user is 18+ or has guardian assistance
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Age consideration: Under 18, using demo mode for payments.

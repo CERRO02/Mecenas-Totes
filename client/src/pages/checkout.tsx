@@ -368,29 +368,36 @@ export default function Checkout() {
 
           {/* Checkout Form */}
           <div className="lg:order-1">
-            <Elements 
-              stripe={stripePromise} 
-              options={{ 
-                clientSecret,
-                appearance: {
-                  theme: 'stripe',
-                  variables: {
-                    colorPrimary: '#2D5E3A',
-                    colorBackground: '#ffffff',
-                    colorText: '#374151',
-                    colorDanger: '#ef4444',
-                    fontFamily: 'Inter, sans-serif',
-                    borderRadius: '8px',
-                  },
-                },
-              }}
-            >
-              <CheckoutForm 
-                clientSecret={clientSecret}
+            {clientSecret === 'demo_mode' || !stripePromise ? (
+              <DemoCheckout 
                 customerEmail={customerEmail}
                 setCustomerEmail={setCustomerEmail}
               />
-            </Elements>
+            ) : (
+              <Elements 
+                stripe={stripePromise} 
+                options={{ 
+                  clientSecret,
+                  appearance: {
+                    theme: 'stripe',
+                    variables: {
+                      colorPrimary: '#2D5E3A',
+                      colorBackground: '#ffffff',
+                      colorText: '#374151',
+                      colorDanger: '#ef4444',
+                      fontFamily: 'Inter, sans-serif',
+                      borderRadius: '8px',
+                    },
+                  },
+                }}
+              >
+                <CheckoutForm 
+                  clientSecret={clientSecret}
+                  customerEmail={customerEmail}
+                  setCustomerEmail={setCustomerEmail}
+                />
+              </Elements>
+            )}
           </div>
         </div>
       </div>
