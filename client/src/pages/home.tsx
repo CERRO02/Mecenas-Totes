@@ -20,11 +20,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Art Meets <span className="text-canvasco-accent">Sustainability</span>
+                Supporting <span className="text-canvasco-accent">Artists</span> Through Art
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-                Discover unique eco-friendly tote bags featuring artwork from emerging artists. 
-                Every purchase supports both the planet and creative talent.
+                Empowering emerging artists with a platform to showcase their talent on eco-friendly tote bags. 
+                Every purchase directly supports creative communities and sustainable practices.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button 
@@ -32,7 +32,7 @@ export default function Home() {
                   className="bg-canvasco-accent hover:bg-canvasco-accent/90 text-white px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
                   asChild
                 >
-                  <Link href="/products">Shop Collection</Link>
+                  <Link href="/artists">Meet Our Artists</Link>
                 </Button>
                 <Button 
                   variant="outline" 
@@ -40,7 +40,7 @@ export default function Home() {
                   className="border-2 border-canvasco-accent bg-canvasco-accent hover:bg-canvasco-accent/90 text-canvasco-primary hover:text-white px-8 py-4 text-lg font-semibold"
                   asChild
                 >
-                  <Link href="/artists">Meet Our Artists</Link>
+                  <Link href="/products">Shop Collection</Link>
                 </Button>
               </div>
             </div>
@@ -65,34 +65,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-canvasco-primary mb-4">
-              Why Choose CanvasCo?
+              Supporting Artists First
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              More than just accessories - we're building a sustainable future for fashion and art
+              Our mission is empowering creative talent while building a sustainable future for art and fashion
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="text-center p-8 border-canvasco-primary/20 hover:border-canvasco-primary/40 transition-colors">
               <CardContent className="pt-6">
-                <Leaf className="h-12 w-12 text-canvasco-accent mx-auto mb-4" />
-                <h3 className="font-display text-xl font-semibold mb-3 text-canvasco-primary">
-                  Eco-Friendly Materials
-                </h3>
-                <p className="text-gray-600">
-                  Made from 100% organic cotton and recycled materials, reducing environmental impact
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center p-8 border-canvasco-primary/20 hover:border-canvasco-primary/40 transition-colors">
-              <CardContent className="pt-6">
                 <Palette className="h-12 w-12 text-canvasco-accent mx-auto mb-4" />
                 <h3 className="font-display text-xl font-semibold mb-3 text-canvasco-primary">
-                  Artist Support
+                  Artist Empowerment
                 </h3>
                 <p className="text-gray-600">
-                  Direct support to emerging artists through fair compensation and exposure
+                  Direct support to emerging artists through fair compensation, exposure, and platform access
                 </p>
               </CardContent>
             </Card>
@@ -101,10 +89,22 @@ export default function Home() {
               <CardContent className="pt-6">
                 <Star className="h-12 w-12 text-canvasco-accent mx-auto mb-4" />
                 <h3 className="font-display text-xl font-semibold mb-3 text-canvasco-primary">
-                  Unique Designs
+                  Original Artwork
                 </h3>
                 <p className="text-gray-600">
-                  Limited edition artwork ensuring your bag is as unique as you are
+                  Each design tells a unique story, showcasing diverse artistic voices and creative perspectives
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center p-8 border-canvasco-primary/20 hover:border-canvasco-primary/40 transition-colors">
+              <CardContent className="pt-6">
+                <Leaf className="h-12 w-12 text-canvasco-accent mx-auto mb-4" />
+                <h3 className="font-display text-xl font-semibold mb-3 text-canvasco-primary">
+                  Sustainable Impact
+                </h3>
+                <p className="text-gray-600">
+                  Eco-friendly materials and ethical production supporting both artists and our planet
                 </p>
               </CardContent>
             </Card>
@@ -118,7 +118,7 @@ export default function Home() {
                 className="bg-canvasco-accent hover:bg-canvasco-accent/90 text-white px-8 py-4 text-lg font-semibold"
                 asChild
               >
-                <Link href="/products">Browse Collection</Link>
+                <Link href="/artists">Discover Artists</Link>
               </Button>
               <Button 
                 variant="outline"
@@ -126,7 +126,7 @@ export default function Home() {
                 className="border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white px-8 py-4 text-lg font-semibold"
                 asChild
               >
-                <Link href="/artists">Meet Artists</Link>
+                <Link href="/products">Browse Collection</Link>
               </Button>
             </div>
           </div>
@@ -137,10 +137,10 @@ export default function Home() {
       <section className="py-16 bg-canvasco-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Stay Connected
+            Follow Artist Stories
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Get updates on new artists, exclusive collections, and sustainability initiatives
+            Get updates on featured artists, their creative journeys, and new artwork releases
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input

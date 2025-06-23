@@ -16,9 +16,9 @@ export default function Header() {
   };
 
   const navItems = [
+    { path: '/artists', label: 'Artists' },
     { path: '/', label: 'Home' },
     { path: '/products', label: 'Shop' },
-    { path: '/artists', label: 'Artists' },
   ];
 
   return (
