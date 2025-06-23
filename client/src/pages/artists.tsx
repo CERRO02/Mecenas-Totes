@@ -61,7 +61,7 @@ export default function Artists() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-8 lg:p-12 text-white">
                 <div className="mb-6">
-                  <Badge className="bg-white/20 text-white border-white/30">
+                  <Badge className="bg-canvasco-primary text-white border-canvasco-primary">
                     This Week's Featured Artist
                   </Badge>
                 </div>
