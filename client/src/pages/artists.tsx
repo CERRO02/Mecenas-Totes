@@ -57,7 +57,7 @@ export default function Artists() {
 
         {/* Featured Artist */}
         {featuredArtist && (
-          <div className="bg-gradient-to-r from-canvasco-primary to-canvasco-accent rounded-3xl overflow-hidden shadow-2xl mb-12">
+          <div className="bg-canvasco-primary rounded-3xl overflow-hidden shadow-2xl mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-8 lg:p-12 text-white">
                 <div className="mb-6">
