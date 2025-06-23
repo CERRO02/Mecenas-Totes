@@ -102,7 +102,7 @@ export default function Artists() {
                   {featuredArtist.website && (
                     <Button 
                       variant="outline" 
-                      className="border-white text-white hover:bg-white hover:text-canvasco-primary"
+                      className="border-canvasco-primary bg-canvasco-primary text-white hover:bg-white hover:text-canvasco-primary"
                       asChild
                     >
                       <a href={featuredArtist.website} target="_blank" rel="noopener noreferrer">
