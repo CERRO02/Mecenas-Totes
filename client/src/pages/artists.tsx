@@ -26,7 +26,7 @@ export default function Artists() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-canvasco-secondary py-8">
+      <div className="min-h-screen bg-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse">
             <div className="h-12 bg-gray-200 rounded w-64 mb-8"></div>
@@ -43,14 +43,14 @@ export default function Artists() {
   }
 
   return (
-    <div className="min-h-screen bg-canvasco-secondary py-8">
+    <div className="min-h-screen bg-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="font-display text-3xl md:text-4xl font-bold text-canvasco-primary mb-4">
             Weekly Artist Spotlight
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto font-semibold">
             Meet the talented artists behind our beautiful designs and learn their inspiring stories
           </p>
         </div>
@@ -162,18 +162,18 @@ export default function Artists() {
                       {artist.name}
                     </h3>
                     
-                    <div className="flex items-center gap-2 text-gray-600 mb-3">
+                    <div className="flex items-center gap-2 text-black mb-3">
                       <MapPin className="h-4 w-4 text-canvasco-accent" />
-                      <span className="text-sm">{artist.location}</span>
+                      <span className="text-sm font-semibold">{artist.location}</span>
                     </div>
                     
-                    <p className="text-gray-700 text-sm mb-4 line-clamp-3">
+                    <p className="text-black text-sm mb-4 line-clamp-3 font-medium">
                       {artist.bio}
                     </p>
                     
                     <div className="flex items-center gap-2 text-canvasco-primary mb-4">
                       <Palette className="h-4 w-4" />
-                      <span className="text-sm font-semibold">{artist.style}</span>
+                      <span className="text-sm font-bold">{artist.style}</span>
                     </div>
                     
                     <div className="flex items-center justify-between">
