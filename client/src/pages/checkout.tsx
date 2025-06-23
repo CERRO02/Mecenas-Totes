@@ -6,6 +6,7 @@ import { stripePromise } from '@/lib/stripe';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
+import { DemoCheckout } from '@/components/demo-checkout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -220,7 +221,12 @@ export default function Checkout() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setClientSecret(data.clientSecret);
+          if (data.demo) {
+            // Demo mode - simulate client secret
+            setClientSecret('demo_mode');
+          } else {
+            setClientSecret(data.clientSecret);
+          }
         })
         .catch((error) => {
           toast({

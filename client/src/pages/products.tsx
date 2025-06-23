@@ -12,7 +12,7 @@ export default function Products() {
   const [location] = useLocation();
   const searchParams = new URLSearchParams(location.split('?')[1] || '');
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
-  const [selectedArtist, setSelectedArtist] = useState(searchParams.get('artist') || '');
+  const [selectedArtist, setSelectedArtist] = useState(searchParams.get('artist') || 'all');
   const [sortBy, setSortBy] = useState('name');
 
   const { data: products = [], isLoading } = useQuery<ProductWithArtist[]>({
@@ -20,7 +20,7 @@ export default function Products() {
     queryFn: async () => {
       const params = new URLSearchParams();
       if (searchQuery) params.append('search', searchQuery);
-      if (selectedArtist) params.append('artist', selectedArtist);
+      if (selectedArtist && selectedArtist !== 'all') params.append('artist', selectedArtist);
       
       const response = await fetch(`/api/products?${params}`);
       if (!response.ok) throw new Error('Failed to fetch products');
@@ -39,7 +39,7 @@ export default function Products() {
 
   const clearFilters = () => {
     setSearchQuery('');
-    setSelectedArtist('');
+    setSelectedArtist('all');
     setSortBy('name');
   };
 
@@ -93,7 +93,7 @@ export default function Products() {
                 <SelectValue placeholder="Filter by artist" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Artists</SelectItem>
+                <SelectItem value="all">All Artists</SelectItem>
                 {artists.map((artist) => (
                   <SelectItem key={artist.id} value={artist.id.toString()}>
                     {artist.name}
@@ -116,7 +116,7 @@ export default function Products() {
             </Select>
 
             {/* Clear Filters */}
-            {(searchQuery || selectedArtist || sortBy !== 'name') && (
+            {(searchQuery || selectedArtist !== 'all' || sortBy !== 'name') && (
               <Button
                 variant="outline"
                 onClick={clearFilters}
