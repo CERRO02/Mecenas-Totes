@@ -5,13 +5,13 @@ import { storage } from "./storage";
 import { insertCartItemSchema, insertNewsletterSubscriberSchema } from "@shared/schema";
 import { z } from "zod";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('Missing required Stripe secret: STRIPE_SECRET_KEY');
+// Initialize Stripe only if secret key is available
+let stripe: Stripe | null = null;
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-05-28.basil",
+  });
 }
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2023-10-16",
-});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -162,6 +162,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       if (!amount || amount <= 0) {
         return res.status(400).json({ message: "Valid amount required" });
+      }
+
+      if (!stripe) {
+        return res.status(503).json({ 
+          message: "Payment processing temporarily unavailable. Please contact support.",
+          demo: true 
+        });
       }
 
       const paymentIntent = await stripe.paymentIntents.create({

@@ -92,9 +92,9 @@ export class MemStorage implements IStorage {
         bio: "Elena is a self-taught digital artist from Mexico City who draws inspiration from nature and urban landscapes. Her work reflects the harmony between natural and man-made environments.",
         location: "Mexico City, Mexico",
         style: "Digital Art, Nature-Urban Fusion",
-        website: "https://elenaart.com",
-        featured: true,
-        featuredWeek: 48,
+        website: "https://elenaart.com" as string | null,
+        featured: true as boolean | null,
+        featuredWeek: 48 as number | null,
         image: "https://pixabay.com/get/g1c275c92677c93484d61fbd2b0b9056ee05d008d5dcea694a637276ca7d2b3b58568f1c77ff5f91dba9b11c8f4151c69c9b62d6eba488f29b2e19095ab18abee_1280.jpg"
       },
       {
@@ -140,7 +140,12 @@ export class MemStorage implements IStorage {
     ];
 
     for (const artistData of artistsData) {
-      await this.createArtist(artistData);
+      await this.createArtist({
+        ...artistData,
+        website: artistData.website || null,
+        featured: artistData.featured || null,
+        featuredWeek: artistData.featuredWeek || null
+      });
     }
 
     // Seed products
@@ -236,7 +241,13 @@ export class MemStorage implements IStorage {
     ];
 
     for (const productData of productsData) {
-      await this.createProduct(productData);
+      await this.createProduct({
+        ...productData,
+        salePrice: productData.salePrice || null,
+        category: productData.category || null,
+        inStock: productData.inStock !== undefined ? productData.inStock : null,
+        featured: productData.featured !== undefined ? productData.featured : null
+      });
     }
   }
 
@@ -255,7 +266,13 @@ export class MemStorage implements IStorage {
 
   async createArtist(insertArtist: InsertArtist): Promise<Artist> {
     const id = this.currentId.artists++;
-    const artist: Artist = { ...insertArtist, id };
+    const artist: Artist = { 
+      ...insertArtist,
+      id,
+      website: insertArtist.website || null,
+      featured: insertArtist.featured || null,
+      featuredWeek: insertArtist.featuredWeek || null
+    };
     this.artists.set(id, artist);
     return artist;
   }
@@ -297,7 +314,14 @@ export class MemStorage implements IStorage {
 
   async createProduct(insertProduct: InsertProduct): Promise<Product> {
     const id = this.currentId.products++;
-    const product: Product = { ...insertProduct, id };
+    const product: Product = { 
+      ...insertProduct, 
+      id,
+      salePrice: insertProduct.salePrice || null,
+      category: insertProduct.category || null,
+      inStock: insertProduct.inStock !== undefined ? insertProduct.inStock : null,
+      featured: insertProduct.featured !== undefined ? insertProduct.featured : null
+    };
     this.products.set(id, product);
     return product;
   }
@@ -334,7 +358,7 @@ export class MemStorage implements IStorage {
 
     if (existingItem) {
       // Update quantity
-      existingItem.quantity += insertItem.quantity;
+      existingItem.quantity += insertItem.quantity || 1;
       this.cartItems.set(existingItem.id, existingItem);
       return existingItem;
     }
@@ -343,6 +367,7 @@ export class MemStorage implements IStorage {
     const item: CartItem = { 
       ...insertItem, 
       id,
+      quantity: insertItem.quantity || 1,
       createdAt: new Date()
     };
     this.cartItems.set(id, item);
@@ -377,6 +402,8 @@ export class MemStorage implements IStorage {
     const order: Order = { 
       ...insertOrder, 
       id,
+      status: insertOrder.status || "pending",
+      customerEmail: insertOrder.customerEmail || null,
       createdAt: new Date()
     };
     this.orders.set(id, order);
@@ -446,6 +473,7 @@ export class MemStorage implements IStorage {
     const subscriber: NewsletterSubscriber = { 
       ...insertSubscriber, 
       id,
+      subscribed: insertSubscriber.subscribed ?? true,
       createdAt: new Date()
     };
     this.newsletterSubscribers.set(id, subscriber);
