@@ -22,7 +22,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-[100]">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -37,11 +37,12 @@ export default function Header() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`transition-colors ${
+                className={`transition-colors cursor-pointer select-none relative z-10 px-2 py-1 ${
                   isActive(item.path)
                     ? 'text-canvasco-primary font-medium'
                     : 'text-canvasco-neutral hover:text-canvasco-primary'
                 }`}
+                style={{ pointerEvents: 'auto' }}
               >
                 {item.label}
               </Link>
