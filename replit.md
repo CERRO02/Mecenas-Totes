@@ -129,6 +129,7 @@ Changelog:
 
 → Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance
+→ Company rebranded from CanvasCo to Mecenas Totes across all pages and documentation
 
 ## User Preferences
 
