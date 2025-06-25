@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/amy.art617" as string | null,
         featured: true as boolean | null,
         featuredWeek: 52 as number | null,
-        image: "/attached_assets/Screenshot 2025-06-25 at 10.42.00 AM_1750862522967.png"
+        image: "/attached_assets/Screenshot%202025-06-25%20at%2010.42.00%20AM_1750862522967.png"
       },
       {
         name: "Maya Chen",
