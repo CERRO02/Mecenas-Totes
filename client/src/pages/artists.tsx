@@ -42,90 +42,90 @@ export default function Artists() {
     <div className="min-h-screen bg-white py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-canvasco-neutral mb-4">
-            Meet Our Artist
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-canvasco-neutral mb-4">
+            Our Artists
           </h1>
-          <p className="text-xl text-canvasco-neutral/80">
-            Discover the creative mind behind our sustainable designs
+          <p className="text-lg text-canvasco-neutral/80">
+            Meet the talented creators behind our sustainable designs
           </p>
         </div>
 
-        {/* Amy Ma Profile */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Amy Ma Profile - Compact */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
             {/* Photo Section */}
             <div className="relative">
               <img 
                 src={amyMa.image} 
                 alt={`Artist ${amyMa.name}`} 
-                className="w-full h-full object-cover min-h-[400px] lg:min-h-[600px]"
+                className="w-full h-48 md:h-64 object-cover rounded-lg"
               />
-              <div className="absolute bottom-4 left-4 bg-white/95 text-canvasco-primary px-4 py-2 rounded-full font-semibold shadow-lg">
-                Featured Artist
+              <div className="absolute top-2 right-2 bg-canvasco-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                Featured
               </div>
             </div>
             
             {/* Information Section */}
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <h2 className="text-3xl lg:text-4xl font-bold text-canvasco-neutral mb-6">
-                {amyMa.name}
-              </h2>
-              
-              {/* Artist Details */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3 text-canvasco-neutral/80">
-                  <MapPin className="h-5 w-5 text-canvasco-accent" />
-                  <span className="font-medium">{amyMa.location}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-canvasco-neutral/80">
-                  <Palette className="h-5 w-5 text-canvasco-accent" />
-                  <span className="font-medium">{amyMa.style}</span>
+            <div className="md:col-span-2 space-y-4">
+              <div>
+                <h2 className="text-2xl font-bold text-canvasco-neutral mb-2">
+                  {amyMa.name}
+                </h2>
+                
+                {/* Artist Details */}
+                <div className="flex flex-wrap gap-4 mb-4">
+                  <div className="flex items-center space-x-2 text-canvasco-neutral/70">
+                    <MapPin className="h-4 w-4 text-canvasco-accent" />
+                    <span className="text-sm">{amyMa.location}</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-canvasco-neutral/70">
+                    <Palette className="h-4 w-4 text-canvasco-accent" />
+                    <span className="text-sm">{amyMa.style}</span>
+                  </div>
                 </div>
               </div>
 
               {/* Bio */}
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-canvasco-neutral mb-4">About Amy</h3>
-                <p className="text-canvasco-neutral/80 leading-relaxed text-lg">
+              <div>
+                <p className="text-canvasco-neutral/80 text-sm leading-relaxed line-clamp-4">
                   {amyMa.bio}
                 </p>
               </div>
 
-              {/* Contact Information */}
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-canvasco-neutral mb-4">Connect with Amy</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3 text-canvasco-neutral/80">
-                    <Instagram className="h-5 w-5 text-canvasco-accent" />
-                    <span className="font-medium">@amy.art617</span>
-                  </div>
-                  <div className="flex items-center space-x-3 text-canvasco-neutral/80">
-                    <Mail className="h-5 w-5 text-canvasco-accent" />
-                    <span className="font-medium">amymaz1hui@gmail.com</span>
-                  </div>
+              {/* Contact & Actions */}
+              <div className="flex flex-wrap gap-3 items-center">
+                <div className="flex items-center space-x-2 text-canvasco-neutral/70">
+                  <Instagram className="h-4 w-4 text-canvasco-accent" />
+                  <span className="text-sm">@amy.art617</span>
+                </div>
+                <div className="flex items-center space-x-2 text-canvasco-neutral/70">
+                  <Mail className="h-4 w-4 text-canvasco-accent" />
+                  <span className="text-sm">amymaz1hui@gmail.com</span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="space-y-4">
+              <div className="flex gap-3">
                 <Button 
-                  className="w-full bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold py-3"
+                  size="sm"
+                  className="bg-canvasco-primary hover:bg-canvasco-primary/90 text-white"
                   asChild
                 >
                   <a href={`/products?artist=${amyMa.id}`}>
-                    View Amy's Tote Bag Designs
+                    View Designs
                   </a>
                 </Button>
                 
                 <Button 
+                  size="sm"
                   variant="outline" 
-                  className="w-full border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white font-semibold py-3"
+                  className="border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white"
                   asChild
                 >
                   <a href={amyMa.website} target="_blank" rel="noopener noreferrer">
-                    <Instagram className="h-4 w-4 mr-2" />
-                    Follow on Instagram
+                    <Instagram className="h-3 w-3 mr-1" />
+                    Follow
                   </a>
                 </Button>
               </div>
@@ -133,14 +133,37 @@ export default function Artists() {
           </div>
         </div>
 
-        {/* Additional Info Section */}
-        <div className="mt-12 bg-gradient-to-r from-canvasco-primary/10 to-canvasco-accent/10 rounded-2xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-canvasco-neutral mb-4">
-            Supporting Young Artists
+        {/* Additional Artists Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold text-canvasco-neutral mb-6">More Artists Coming Soon</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Placeholder for future artists */}
+            <div className="bg-gray-50 rounded-xl p-6 text-center border-2 border-dashed border-gray-200">
+              <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4"></div>
+              <p className="text-gray-500 font-medium">Next Artist</p>
+              <p className="text-gray-400 text-sm">Coming Soon</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 text-center border-2 border-dashed border-gray-200">
+              <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4"></div>
+              <p className="text-gray-500 font-medium">Next Artist</p>
+              <p className="text-gray-400 text-sm">Coming Soon</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 text-center border-2 border-dashed border-gray-200">
+              <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4"></div>
+              <p className="text-gray-500 font-medium">Next Artist</p>
+              <p className="text-gray-400 text-sm">Coming Soon</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Supporting Artists Info */}
+        <div className="mt-8 bg-gradient-to-r from-canvasco-primary/10 to-canvasco-accent/10 rounded-xl p-6 text-center">
+          <h3 className="text-xl font-bold text-canvasco-neutral mb-3">
+            Supporting Emerging Artists
           </h3>
-          <p className="text-lg text-canvasco-neutral/80 max-w-2xl mx-auto">
-            CanvasCo is proud to partner with emerging artists like Amy Ma, providing a platform 
-            to showcase their talent while promoting sustainable fashion and meaningful storytelling.
+          <p className="text-canvasco-neutral/80 max-w-2xl mx-auto">
+            CanvasCo provides a platform for talented artists to showcase their work while promoting 
+            sustainable fashion and meaningful storytelling.
           </p>
         </div>
       </div>
