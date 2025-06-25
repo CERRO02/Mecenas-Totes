@@ -123,8 +123,11 @@ Changelog:
 ✓ Added complete login/signup system with demo authentication
 ✓ Integrated authentication with checkout flow - login required only for purchase
 ✓ Updated navigation order: Home → Artists → Shop
+✓ Added first real artist: Amy Ma from Lexington High School
+✓ Featured Amy as current spotlight artist with environmental storytelling focus
+✓ Created Amy's tote bag collections reflecting climate change and immigration themes
 
-→ Website is fully functional in demo mode with authentication
+→ Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance
 
 ## User Preferences

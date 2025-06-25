@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/amy.art617" as string | null,
         featured: true as boolean | null,
         featuredWeek: 52 as number | null,
-        image: "/attached_assets/Screenshot 2025-06-25 at 10.42.00 AM_1750862522967.png"
+        image: "https://images.unsplash.com/photo-1494790108755-2616c2ba1c35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
       },
       {
         name: "Maya Chen",
@@ -210,7 +210,7 @@ export class MemStorage implements IStorage {
         description: "Amy explores the intersection of technology and nature in this thought-provoking design about our digital future.",
         price: "34.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 1,
         category: "tote-bag",
         inStock: true,
