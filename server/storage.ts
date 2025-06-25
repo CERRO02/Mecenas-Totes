@@ -88,14 +88,14 @@ export class MemStorage implements IStorage {
     // Seed artists
     const artistsData = [
       {
-        name: "Elena Rodriguez",
-        bio: "Elena is a self-taught digital artist from Mexico City who draws inspiration from nature and urban landscapes. Her work reflects the harmony between natural and man-made environments.",
-        location: "Mexico City, Mexico",
-        style: "Digital Art, Nature-Urban Fusion",
-        website: "https://elenaart.com" as string | null,
+        name: "Amy Ma",
+        bio: "Amy is a rising Junior at Lexington High School who explores themes of nature, climate change, immigration, and technology while blending digital and traditional arts. Her art is driven by storytelling and the foreshadowing of our unpredictable future. When she's not creating, she enjoys playing badminton, swimming, and reading psychological horror.",
+        location: "Lexington, MA",
+        style: "Digital & Traditional Arts, Environmental Storytelling",
+        website: "https://instagram.com/amy.art617" as string | null,
         featured: true as boolean | null,
-        featuredWeek: 48 as number | null,
-        image: "https://pixabay.com/get/g1c275c92677c93484d61fbd2b0b9056ee05d008d5dcea694a637276ca7d2b3b58568f1c77ff5f91dba9b11c8f4151c69c9b62d6eba488f29b2e19095ab18abee_1280.jpg"
+        featuredWeek: 52 as number | null,
+        image: "/attached_assets/Screenshot 2025-06-25 at 10.42.00 AM_1750862522967.png"
       },
       {
         name: "Maya Chen",
@@ -151,12 +151,12 @@ export class MemStorage implements IStorage {
     // Seed products
     const productsData = [
       {
-        name: "Abstract Dreams Tote",
-        description: "Vibrant abstract artwork meets sustainable canvas in this eye-catching design that celebrates creativity and environmental consciousness.",
-        price: "34.99",
+        name: "Climate Future Tote",
+        description: "Amy Ma's powerful environmental storytelling design explores climate change themes through digital art that foreshadows our planet's future.",
+        price: "36.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
-        artistId: 2,
+        image: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        artistId: 1,
         category: "tote-bag",
         inStock: true,
         featured: true
@@ -195,9 +195,20 @@ export class MemStorage implements IStorage {
         featured: true
       },
       {
-        name: "Nature's Symphony Tote",
-        description: "Elena's signature piece combining digital art with natural elements, celebrating the beauty of our planet.",
-        price: "42.99",
+        name: "Immigration Stories Tote",
+        description: "Amy Ma's blend of traditional and digital techniques tells the story of human migration and cultural connection.",
+        price: "38.99",
+        salePrice: null,
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        artistId: 1,
+        category: "tote-bag",
+        inStock: true,
+        featured: true
+      },
+      {
+        name: "Tech & Nature Harmony Tote",
+        description: "Amy explores the intersection of technology and nature in this thought-provoking design about our digital future.",
+        price: "34.99",
         salePrice: null,
         image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
         artistId: 1,
