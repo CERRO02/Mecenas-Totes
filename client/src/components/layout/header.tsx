@@ -31,7 +31,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <Palette className="text-canvasco-primary text-2xl" />
-            <span className="font-display font-bold text-xl text-canvasco-primary">CanvasCo</span>
+            <span className="font-display font-bold text-xl text-canvasco-primary">Mecenas Totes</span>
           </Link>
 
           {/* Desktop Navigation */}

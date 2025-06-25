@@ -162,7 +162,7 @@ export default function Artists() {
             Supporting Emerging Artists
           </h3>
           <p className="text-canvasco-neutral/80 max-w-2xl mx-auto">
-            CanvasCo provides a platform for talented artists to showcase their work while promoting 
+            Mecenas Totes provides a platform for talented artists to showcase their work while promoting 
             sustainable fashion and meaningful storytelling.
           </p>
         </div>

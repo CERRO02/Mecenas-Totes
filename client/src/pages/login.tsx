@@ -93,7 +93,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Palette className="text-canvasco-primary text-3xl" />
-            <span className="font-display font-bold text-2xl text-canvasco-primary">CanvasCo</span>
+            <span className="font-display font-bold text-2xl text-canvasco-primary">Mecenas Totes</span>
           </div>
           <h1 className="font-display text-2xl font-bold text-canvasco-primary mb-2">
             Join Our Artist Community

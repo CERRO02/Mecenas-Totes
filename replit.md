@@ -1,8 +1,8 @@
-# CanvasCo - Artist Tote Bag Marketplace
+# Mecenas Totes - Artist Tote Bag Marketplace
 
 ## Overview
 
-CanvasCo is a full-stack e-commerce application that connects sustainable fashion with emerging artists. The platform allows users to discover and purchase eco-friendly tote bags featuring artwork from featured artists. The application is built as a modern web platform with a React frontend, Express.js backend, and PostgreSQL database.
+Mecenas Totes is a full-stack e-commerce application that connects sustainable fashion with emerging artists. The platform allows users to discover and purchase eco-friendly tote bags featuring artwork from featured artists. The application is built as a modern web platform with a React frontend, Express.js backend, and PostgreSQL database.
 
 ## System Architecture
 
@@ -12,7 +12,7 @@ CanvasCo is a full-stack e-commerce application that connects sustainable fashio
 - **Routing**: Wouter for client-side routing
 - **State Management**: TanStack Query for server state, React Context for cart management
 - **Build Tool**: Vite for development and production builds
-- **UI Components**: Comprehensive shadcn/ui component system with custom CanvasCo branding
+- **UI Components**: Comprehensive shadcn/ui component system with custom Mecenas Totes branding
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js framework
@@ -109,11 +109,11 @@ CanvasCo is a full-stack e-commerce application that connects sustainable fashio
 
 Changelog:
 - June 23, 2025: Initial setup
-- June 23, 2025: Complete CanvasCo e-commerce website with demo mode for users under 18
+- June 23, 2025: Complete Mecenas Totes e-commerce website with demo mode for users under 18
 
 ## Recent Changes
 
-✓ Created complete CanvasCo e-commerce website
+✓ Created complete Mecenas Totes e-commerce website
 ✓ Built product catalog with eco-friendly tote bags
 ✓ Implemented artist spotlight system with weekly featured artists
 ✓ Added shopping cart functionality with session storage

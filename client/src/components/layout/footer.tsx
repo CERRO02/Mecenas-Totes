@@ -84,7 +84,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Palette className="text-canvasco-accent text-2xl" />
-                <span className="font-display font-bold text-xl">CanvasCo</span>
+                <span className="font-display font-bold text-xl">Mecenas Totes</span>
               </div>
               <p className="text-gray-300 mb-4">
                 Connecting art, sustainability, and community through beautiful eco-friendly tote bags.
