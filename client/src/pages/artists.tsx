@@ -1,42 +1,38 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { 
-  Star, 
   MapPin, 
   Palette, 
-  ShoppingBag, 
-  ArrowRight,
+  Instagram,
+  Mail,
   ExternalLink
 } from 'lucide-react';
 import type { Artist } from '@shared/schema';
 
 export default function Artists() {
-  const { data: artists = [], isLoading } = useQuery<Artist[]>({
-    queryKey: ['/api/artists'],
-  });
-
-  const { data: featuredArtist } = useQuery<Artist>({
+  const { data: amyMa, isLoading } = useQuery<Artist>({
     queryKey: ['/api/artists/featured/current'],
   });
-
-  const previousArtists = artists.filter(artist => !artist.featured);
 
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded w-64 mb-8"></div>
-            <div className="h-96 bg-gray-200 rounded-3xl mb-12"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="h-64 bg-gray-200 rounded-2xl"></div>
-              ))}
-            </div>
+            <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-2/3 mb-8"></div>
+            <div className="bg-gray-200 rounded-lg h-96"></div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!amyMa) {
+    return (
+      <div className="min-h-screen bg-white py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-2xl font-bold text-canvasco-neutral">Artist information not available</h1>
         </div>
       </div>
     );
@@ -44,200 +40,108 @@ export default function Artists() {
 
   return (
     <div className="min-h-screen bg-white py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-canvasco-primary mb-4">
-            Weekly Artist Spotlight
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-canvasco-neutral mb-4">
+            Meet Our Artist
           </h1>
-          <p className="text-xl text-black max-w-2xl mx-auto font-semibold">
-            Meet the talented artists behind our beautiful designs and learn their inspiring stories
+          <p className="text-xl text-canvasco-neutral/80">
+            Discover the creative mind behind our sustainable designs
           </p>
         </div>
 
-        {/* Featured Artist */}
-        {featuredArtist && (
-          <div className="bg-canvasco-primary rounded-3xl overflow-hidden shadow-2xl mb-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-8 lg:p-12 text-white">
-                <div className="mb-6">
-                  <Badge className="bg-canvasco-primary text-white border-canvasco-primary">
-                    This Week's Featured Artist
-                  </Badge>
-                </div>
-                
-                <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                  {featuredArtist.name}
-                </h2>
-                
-                <p className="text-lg mb-6 opacity-90 leading-relaxed">
-                  {featuredArtist.bio}
-                </p>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="h-5 w-5 text-canvasco-accent" />
-                    <span>{featuredArtist.location}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Palette className="h-5 w-5 text-canvasco-accent" />
-                    <span>{featuredArtist.style}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <ShoppingBag className="h-5 w-5 text-canvasco-accent" />
-                    <span>Multiple Designs Available</span>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    className="bg-white text-canvasco-primary hover:bg-white/90"
-                    asChild
-                  >
-                    <Link href={`/products?artist=${featuredArtist.id}`}>
-                      View Their Bags
-                    </Link>
-                  </Button>
-                  
-                  {featuredArtist.website && (
-                    <Button 
-                      variant="outline" 
-                      className="border-white bg-white text-canvasco-primary hover:bg-canvasco-primary hover:text-white"
-                      asChild
-                    >
-                      <a href={featuredArtist.website} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Visit Website
-                      </a>
-                    </Button>
-                  )}
-                </div>
+        {/* Amy Ma Profile */}
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Photo Section */}
+            <div className="relative">
+              <img 
+                src={amyMa.image} 
+                alt={`Artist ${amyMa.name}`} 
+                className="w-full h-full object-cover min-h-[400px] lg:min-h-[600px]"
+              />
+              <div className="absolute bottom-4 left-4 bg-white/95 text-canvasco-primary px-4 py-2 rounded-full font-semibold shadow-lg">
+                Featured Artist
               </div>
+            </div>
+            
+            {/* Information Section */}
+            <div className="p-8 lg:p-12 flex flex-col justify-center">
+              <h2 className="text-3xl lg:text-4xl font-bold text-canvasco-neutral mb-6">
+                {amyMa.name}
+              </h2>
               
-              <div className="relative">
-                <img 
-                  src={featuredArtist.image} 
-                  alt={`Featured artist ${featuredArtist.name}`} 
-                  className="w-full h-full object-cover lg:h-auto lg:min-h-full"
-                />
-                <div className="absolute bottom-4 right-4 bg-white/90 text-canvasco-primary px-4 py-2 rounded-full font-semibold">
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4" />
-                    Featured Artist
+              {/* Artist Details */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3 text-canvasco-neutral/80">
+                  <MapPin className="h-5 w-5 text-canvasco-accent" />
+                  <span className="font-medium">{amyMa.location}</span>
+                </div>
+                <div className="flex items-center space-x-3 text-canvasco-neutral/80">
+                  <Palette className="h-5 w-5 text-canvasco-accent" />
+                  <span className="font-medium">{amyMa.style}</span>
+                </div>
+              </div>
+
+              {/* Bio */}
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-canvasco-neutral mb-4">About Amy</h3>
+                <p className="text-canvasco-neutral/80 leading-relaxed text-lg">
+                  {amyMa.bio}
+                </p>
+              </div>
+
+              {/* Contact Information */}
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-canvasco-neutral mb-4">Connect with Amy</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 text-canvasco-neutral/80">
+                    <Instagram className="h-5 w-5 text-canvasco-accent" />
+                    <span className="font-medium">@amy.art617</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-canvasco-neutral/80">
+                    <Mail className="h-5 w-5 text-canvasco-accent" />
+                    <span className="font-medium">amymaz1hui@gmail.com</span>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        )}
 
-        {/* Previous Artists Grid */}
-        {previousArtists.length > 0 && (
-          <div className="mb-12">
-            <h2 className="font-display text-2xl font-bold text-canvasco-primary mb-8 text-center">
-              Previous Featured Artists
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {previousArtists.map((artist) => (
-                <Card 
-                  key={artist.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              {/* Action Buttons */}
+              <div className="space-y-4">
+                <Button 
+                  className="w-full bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold py-3"
+                  asChild
                 >
-                  <div className="relative">
-                    <img 
-                      src={artist.image} 
-                      alt={`Artist ${artist.name}`} 
-                      className="w-full h-48 object-cover"
-                    />
-                    {artist.featuredWeek && (
-                      <div className="absolute bottom-4 left-4 bg-white/90 text-canvasco-primary px-3 py-1 rounded-full text-sm font-semibold">
-                        Week {artist.featuredWeek}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <CardContent className="p-6">
-                    <h3 className="font-display text-xl font-semibold text-canvasco-primary mb-2">
-                      {artist.name}
-                    </h3>
-                    
-                    <div className="flex items-center gap-2 text-black mb-3">
-                      <MapPin className="h-4 w-4 text-canvasco-accent" />
-                      <span className="text-sm font-semibold">{artist.location}</span>
-                    </div>
-                    
-                    <p className="text-black text-sm mb-4 line-clamp-3 font-medium">
-                      {artist.bio}
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-canvasco-primary mb-4">
-                      <Palette className="h-4 w-4" />
-                      <span className="text-sm font-bold">{artist.style}</span>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="text-canvasco-primary hover:bg-canvasco-primary hover:text-white"
-                        asChild
-                      >
-                        <Link href={`/products?artist=${artist.id}`}>
-                          View Bags
-                        </Link>
-                      </Button>
-                      
-                      {artist.website && (
-                        <Button 
-                          variant="ghost" 
-                          size="sm"
-                          className="text-canvasco-accent hover:text-canvasco-primary"
-                          asChild
-                        >
-                          <a href={artist.website} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  <a href={`/products?artist=${amyMa.id}`}>
+                    View Amy's Tote Bag Designs
+                  </a>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  className="w-full border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white font-semibold py-3"
+                  asChild
+                >
+                  <a href={amyMa.website} target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-4 w-4 mr-2" />
+                    Follow on Instagram
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* Call to Action */}
-        <div className="text-center bg-white rounded-3xl p-8 lg:p-12 shadow-lg">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-canvasco-primary mb-4">
-            Want to be Featured?
-          </h2>
-          <p className="text-canvasco-neutral mb-8 max-w-2xl mx-auto">
-            We're always looking for talented emerging artists to feature. If you create original artwork 
-            and are passionate about sustainability, we'd love to hear from you.
+        {/* Additional Info Section */}
+        <div className="mt-12 bg-gradient-to-r from-canvasco-primary/10 to-canvasco-accent/10 rounded-2xl p-8 text-center">
+          <h3 className="text-2xl font-bold text-canvasco-neutral mb-4">
+            Supporting Young Artists
+          </h3>
+          <p className="text-lg text-canvasco-neutral/80 max-w-2xl mx-auto">
+            CanvasCo is proud to partner with emerging artists like Amy Ma, providing a platform 
+            to showcase their talent while promoting sustainable fashion and meaningful storytelling.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg"
-              className="bg-canvasco-primary hover:bg-canvasco-primary/90 text-white"
-            >
-              Apply to be Featured
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white"
-              asChild
-            >
-              <Link href="/products">
-                Shop All Designs
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </div>
