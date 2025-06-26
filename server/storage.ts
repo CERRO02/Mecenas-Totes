@@ -89,7 +89,7 @@ export class MemStorage implements IStorage {
     const artistsData = [
       {
         name: "Amy Ma",
-        bio: "Amy is a rising Junior at Lexington High School who explores themes of nature, climate change, immigration, and technology while blending digital and traditional arts. Her art is driven by storytelling and the foreshadowing of our unpredictable future. When she's not creating, she enjoys playing badminton, swimming, and reading psychological horror.",
+        bio: "Hi, I'm Amy Ma, a rising Junior at Lexington High School. As an artist, I explore themes of nature, climate change, immigration, and technology while blending digital and traditional arts. My art is mostly driven by storytelling and the foreshadowing of our unpredictable future. When I'm not creating, I like to play badminton, swim, and read psychological horror.",
         location: "Lexington, MA",
         style: "Digital & Traditional Arts, Environmental Storytelling",
         website: "https://instagram.com/amy.art617" as string | null,
