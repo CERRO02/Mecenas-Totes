@@ -92,7 +92,7 @@ export default function Artists() {
 
                   {/* Bio */}
                   <div>
-                    <p className="text-canvasco-neutral/80 text-sm leading-relaxed line-clamp-4">
+                    <p className="text-canvasco-neutral/80 text-sm leading-relaxed">
                       {artist.bio}
                     </p>
                   </div>
