@@ -31,7 +31,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <img 
-              src={new URL("@assets/WechatIMG1167_1750958485529.jpg", import.meta.url).href} 
+              src={new URL("@assets/11681750959629_.pic_1750959645600.jpg", import.meta.url).href} 
               alt="Mecenas Totes Logo" 
               className="h-8 w-8 object-contain"
             />

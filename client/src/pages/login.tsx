@@ -93,7 +93,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <img 
-              src={new URL("@assets/WechatIMG1167_1750958485529.jpg", import.meta.url).href} 
+              src={new URL("@assets/11681750959629_.pic_1750959645600.jpg", import.meta.url).href} 
               alt="Mecenas Totes Logo" 
               className="h-10 w-10 object-contain"
             />
