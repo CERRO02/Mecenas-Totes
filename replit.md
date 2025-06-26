@@ -128,7 +128,9 @@ Changelog:
 ✓ Created Amy's tote bag collections reflecting climate change and immigration themes
 ✓ Added second artist: Emma Xu from Lexington High School
 ✓ Created Emma's nature-focused tote bag collections emphasizing color and natural details
-✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma and Emma Xu
+✓ Added third artist: Alexis Zhang from Belmont High School
+✓ Featured Alexis with multidisciplinary art focus on human nature complexity
+✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, and Alexis Zhang
 
 → Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance

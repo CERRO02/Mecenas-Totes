@@ -106,6 +106,16 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/emma-xu.png"
+      },
+      {
+        name: "Alexis Zhang",
+        bio: "I'm Alexis Zhang, a multidisciplinary artist born and raised in Massachusetts, currently studying at Belmont High School. My art focuses on the complexity of human nature, exploring novel ways to unravel and express the world through my creative lens. When I'm not experimenting with art mediums, you can find me planning meetings for Belmont's Art Therapy Club, filming erhu content for social media, or reading cognitive science articles online.",
+        location: "Belmont, MA",
+        style: "Multidisciplinary Art, Human Nature Studies",
+        website: "https://instagram.com/azhang.artt",
+        featured: false,
+        featuredWeek: null,
+        image: "/attached_assets/11701750971815_.pic_1750971832933.jpg"
       }
     ];
 

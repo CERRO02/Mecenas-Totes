@@ -105,6 +105,7 @@ export default function Artists() {
                         <span className="text-sm">
                           {artist.name === 'Amy Ma' ? '@amy.art617' : 
                            artist.name === 'Emma Xu' ? '@lentil.beans.art' : 
+                           artist.name === 'Alexis Zhang' ? '@azhang.artt' :
                            'Portfolio'}
                         </span>
                       </div>
@@ -114,6 +115,7 @@ export default function Artists() {
                       <span className="text-sm">
                         {artist.name === 'Amy Ma' ? 'amymaz1hui@gmail.com' : 
                          artist.name === 'Emma Xu' ? 'emmaxu0513@gmail.com' : 
+                         artist.name === 'Alexis Zhang' ? 'alexis.zhang2010@gmail.com' :
                          'Contact available'}
                       </span>
                     </div>
