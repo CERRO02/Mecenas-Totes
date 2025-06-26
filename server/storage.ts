@@ -116,6 +116,16 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/attached_assets/11701750971815_.pic_1750971832933.jpg"
+      },
+      {
+        name: "Kimly Nguyen",
+        bio: "My name is Kimly Nguyen, and I am a self-taught digital artist from the class of 2027. I have been drawing using Procreate since 2020, but I have also experimented with various traditional media, including colored pencils, markers, and different paints. I resonated with digital art because it was precise, eclectic, and allowed me to capture stories and people in my style. Outside of art, I play volleyball, crochet, do nail art, and play video games.",
+        location: "Massachusetts",
+        style: "Digital Art, Traditional Media, Storytelling",
+        website: "https://instagram.com/kibblessssssss",
+        featured: false,
+        featuredWeek: null,
+        image: "/attached_assets/WechatIMG1171_1750972005584.jpg"
       }
     ];
 
