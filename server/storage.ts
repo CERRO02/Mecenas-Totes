@@ -106,36 +106,6 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/emma-xu.png"
-      },
-      {
-        name: "Oliver Green",
-        bio: "Botanical illustrator with a passion for sustainable art practices and environmental conservation.",
-        location: "Portland, OR",
-        style: "Botanical, Nature Illustration",
-        website: "https://olivergreenart.com",
-        featured: false,
-        featuredWeek: null,
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
-      },
-      {
-        name: "Sam Rivera",
-        bio: "Minimalist artist creating geometric patterns inspired by architecture and urban environments.",
-        location: "Brooklyn, NY",
-        style: "Geometric, Minimalist",
-        website: "https://samrivera.design",
-        featured: false,
-        featuredWeek: null,
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
-      },
-      {
-        name: "Zoe Martinez",
-        bio: "Street artist turned digital creator, bringing urban energy to sustainable fashion through bold designs.",
-        location: "Los Angeles, CA",
-        style: "Street Art, Urban",
-        website: "https://zoemartinez.art",
-        featured: false,
-        featuredWeek: null,
-        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
       }
     ];
 
@@ -234,28 +204,6 @@ export class MemStorage implements IStorage {
         salePrice: null,
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500",
         artistId: 2,
-        category: "tote-bag",
-        inStock: true,
-        featured: false
-      },
-      {
-        name: "Forest Floor Tote",
-        description: "Detailed botanical study of forest floor ecosystems, printed on sustainable canvas.",
-        price: "33.99",
-        salePrice: null,
-        image: "https://pixabay.com/get/gbabe807dbf7cd2e20ff6f854405264872032f20ce8ffa3977bef4925c8ac1c7362af2b3abfc41be259645529e0170c19d7ff74b1019c4546f029787c631c7ad1_1280.jpg",
-        artistId: 3,
-        category: "tote-bag",
-        inStock: true,
-        featured: false
-      },
-      {
-        name: "City Grid Tote",
-        description: "Geometric interpretation of urban architecture and city planning.",
-        price: "34.99",
-        salePrice: null,
-        image: "https://pixabay.com/get/g41ea7c2a46d73b9057f46861c6e68590218616ce4cdf3a60a265bf148d40218348c5a7328ec7d679a705438ddfd29c0fccc5a5dc6a1a720fdd5672adfc5f0882_1280.jpg",
-        artistId: 4,
         category: "tote-bag",
         inStock: true,
         featured: false
