@@ -83,7 +83,11 @@ export default function Footer() {
             {/* Company Info */}
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Palette className="text-canvasco-accent text-2xl" />
+                <img 
+                  src={new URL("@assets/WechatIMG1167_1750958485529.jpg", import.meta.url).href} 
+                  alt="Mecenas Totes Logo" 
+                  className="h-8 w-8 object-contain"
+                />
                 <span className="font-display font-bold text-xl">Mecenas Totes</span>
               </div>
               <p className="text-gray-300 mb-4">

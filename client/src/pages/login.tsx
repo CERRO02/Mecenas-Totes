@@ -92,7 +92,11 @@ export default function Login() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Palette className="text-canvasco-primary text-3xl" />
+            <img 
+              src={new URL("@assets/WechatIMG1167_1750958485529.jpg", import.meta.url).href} 
+              alt="Mecenas Totes Logo" 
+              className="h-10 w-10 object-contain"
+            />
             <span className="font-display font-bold text-2xl text-canvasco-primary">Mecenas Totes</span>
           </div>
           <h1 className="font-display text-2xl font-bold text-canvasco-primary mb-2">

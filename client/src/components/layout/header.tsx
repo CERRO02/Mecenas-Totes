@@ -30,7 +30,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <Palette className="text-canvasco-primary text-2xl" />
+            <img 
+              src={new URL("@assets/WechatIMG1167_1750958485529.jpg", import.meta.url).href} 
+              alt="Mecenas Totes Logo" 
+              className="h-8 w-8 object-contain"
+            />
             <span className="font-display font-bold text-xl text-canvasco-primary">Mecenas Totes</span>
           </Link>
 
