@@ -6,11 +6,13 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/use-auth';
 import { Palette, Mail, Phone, User, Lock } from 'lucide-react';
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   // Login form state
@@ -35,16 +37,18 @@ export default function Login() {
 
     // Demo login - simulate successful login
     setTimeout(() => {
-      localStorage.setItem('user', JSON.stringify({
+      const userData = {
         id: 'demo-user',
         email: loginData.email,
         firstName: 'Demo',
         lastName: 'User'
-      }));
+      };
+      
+      login(userData);
       
       toast({
         title: 'Login Successful!',
-        description: 'Welcome back to CanvasCo',
+        description: 'Welcome back to Mecenas Totes',
       });
       
       setLocation('/');
@@ -68,17 +72,19 @@ export default function Login() {
 
     // Demo signup - simulate successful registration
     setTimeout(() => {
-      localStorage.setItem('user', JSON.stringify({
+      const userData = {
         id: 'demo-user',
         email: signupData.email,
         firstName: signupData.firstName,
         lastName: signupData.lastName,
         phone: signupData.phone
-      }));
+      };
+      
+      login(userData);
       
       toast({
         title: 'Account Created!',
-        description: 'Welcome to CanvasCo community',
+        description: 'Welcome to Mecenas Totes community',
       });
       
       setLocation('/');
