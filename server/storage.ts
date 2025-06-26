@@ -99,13 +99,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Emma Xu",
-        bio: "Emma is a rising junior at Lexington High School who has been making art since she was five. Through her art, she highlights the intricacies of nature, putting emphasis on color and value in her work. She hopes to continue making art in the future to potentially submit pieces for competition, as well as to build a larger portfolio. Outside of art, she enjoys playing guitar, baking, and playing tennis.",
+        bio: "I'm Emma Xu, a rising junior at Lexington High School, and I've been making art since I was five. Through my art, I attempt to highlight the intricacies of nature, putting emphasis on color and value in my work. I hope to continue making art in the future to potentially submit pieces for competition, as well as to build a larger portfolio. Outside of art, I enjoy playing guitar, baking, and playing tennis.",
         location: "Lexington, MA",
         style: "Nature Art, Color & Value Focus",
         website: "https://instagram.com/lentil.beans.art",
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/Screenshot%202025-06-26%20at%204.29.33%20PM_1750969775349.png"
+        image: "/attached_assets/Screenshot 2025-06-26 at 4.29.33 PM_1750969775349.png"
       },
       {
         name: "Oliver Green",
