@@ -20,7 +20,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Supporting <span className="text-canvasco-accent">Artists</span> Through Totes
+                Supporting <span className="text-canvasco-accent">Artists</span> Through Our Totes
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
                 Empowering emerging artists with a platform to showcase their talent on eco-friendly tote bags. 
