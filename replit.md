@@ -126,6 +126,8 @@ Changelog:
 ✓ Added first real artist: Amy Ma from Lexington High School
 ✓ Featured Amy as current spotlight artist with environmental storytelling focus
 ✓ Created Amy's tote bag collections reflecting climate change and immigration themes
+✓ Added second artist: Emma Xu from Lexington High School
+✓ Created Emma's nature-focused tote bag collections emphasizing color and natural details
 
 → Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance

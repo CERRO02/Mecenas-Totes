@@ -98,14 +98,14 @@ export class MemStorage implements IStorage {
         image: "/attached_assets/Screenshot%202025-06-25%20at%2011.16.42%E2%80%AFAM_1750864605993.png"
       },
       {
-        name: "Maya Chen",
-        bio: "Contemporary artist specializing in vibrant abstract compositions that explore emotion through color and form.",
-        location: "San Francisco, CA",
-        style: "Abstract, Contemporary",
-        website: "https://mayachen.art",
+        name: "Emma Xu",
+        bio: "Emma is a rising junior at Lexington High School who has been making art since she was five. Through her art, she highlights the intricacies of nature, putting emphasis on color and value in her work. She hopes to continue making art in the future to potentially submit pieces for competition, as well as to build a larger portfolio. Outside of art, she enjoys playing guitar, baking, and playing tennis.",
+        location: "Lexington, MA",
+        style: "Nature Art, Color & Value Focus",
+        website: "https://instagram.com/lentil.beans.art",
         featured: false,
         featuredWeek: null,
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+        image: "/attached_assets/Screenshot%202025-06-26%20at%204.29.33%20PM_1750969775349.png"
       },
       {
         name: "Oliver Green",
@@ -162,15 +162,26 @@ export class MemStorage implements IStorage {
         featured: true
       },
       {
-        name: "Botanical Garden Tote",
-        description: "Hand-drawn botanical illustrations on organic cotton, featuring native plants and sustainable growing practices.",
-        price: "32.99",
+        name: "Nature's Details Tote",
+        description: "Emma Xu's intricate nature art celebrates the delicate details often overlooked in the natural world, with stunning color and value work.",
+        price: "34.99",
         salePrice: null,
-        image: "https://pixabay.com/get/gbabe807dbf7cd2e20ff6f854405264872032f20ce8ffa3977bef4925c8ac1c7362af2b3abfc41be259645529e0170c19d7ff74b1019c4546f029787c631c7ad1_1280.jpg",
-        artistId: 3,
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        artistId: 2,
         category: "tote-bag",
         inStock: true,
         featured: true
+      },
+      {
+        name: "Colorful Petals Tote",
+        description: "Emma Xu's vibrant exploration of flower petals and botanical forms, showcasing her mastery of color relationships and natural beauty.",
+        price: "32.99",
+        salePrice: null,
+        image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        artistId: 2,
+        category: "tote-bag",
+        inStock: true,
+        featured: false
       },
       {
         name: "Geometric Harmony Tote",
