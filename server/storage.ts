@@ -126,6 +126,16 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/attached_assets/WechatIMG1171_1750972005584.jpg"
+      },
+      {
+        name: "Angela Wang",
+        bio: "Meet Angela! She's 16 years old and currently a rising junior at Needham High School. She took her first art class when she was 5 years old. Over the years, art has become an outlet for her to not only explore the world, but also to express her culture and identity. She's especially into drawing architecture, objects, and scenery! Art will probably stick with her for life, so her goal is pretty simple: keep getting better. Hopefully in the future, she'll be able to draw like WeChat artist 老张和面包 (check him out—he's really cool)! When she's not drawing, you'll find her on the badminton court, on a piano bench, outside taking pictures, or just hanging out with friends. She also loves to read and has an arguably superior music taste. Feel free to reach out to her anytime!",
+        location: "Needham, MA",
+        style: "Architecture, Objects & Scenery, Cultural Expression",
+        website: "https://instagram.com/alegnaaa.art",
+        featured: false,
+        featuredWeek: null,
+        image: "/attached_assets/image_1751241087527.png"
       }
     ];
 

@@ -132,7 +132,9 @@ Changelog:
 ✓ Featured Alexis with multidisciplinary art focus on human nature complexity
 ✓ Added fourth artist: Kimly Nguyen, class of 2027
 ✓ Featured Kimly as self-taught digital artist specializing in Procreate and storytelling
-✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, Alexis Zhang, and Kimly Nguyen
+✓ Added fifth artist: Angela Wang from Needham High School
+✓ Featured Angela focusing on architecture, objects, scenery, and cultural expression
+✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, and Angela Wang
 
 → Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance

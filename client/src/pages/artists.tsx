@@ -107,6 +107,7 @@ export default function Artists() {
                            artist.name === 'Emma Xu' ? '@lentil.beans.art' : 
                            artist.name === 'Alexis Zhang' ? '@azhang.artt' :
                            artist.name === 'Kimly Nguyen' ? '@kibblessssssss' :
+                           artist.name === 'Angela Wang' ? '@alegnaaa.art' :
                            'Portfolio'}
                         </span>
                       </div>
@@ -118,6 +119,7 @@ export default function Artists() {
                          artist.name === 'Emma Xu' ? 'emmaxu0513@gmail.com' : 
                          artist.name === 'Alexis Zhang' ? 'alexis.zhang2010@gmail.com' :
                          artist.name === 'Kimly Nguyen' ? 'kimlynguyen801@gmail.com' :
+                         artist.name === 'Angela Wang' ? 'angelavveivvei@gmail.com' :
                          'Contact available'}
                       </span>
                     </div>
