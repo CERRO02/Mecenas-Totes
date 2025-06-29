@@ -89,7 +89,7 @@ export class MemStorage implements IStorage {
     const artistsData = [
       {
         name: "Amy Ma",
-        bio: "Hi, I'm Amy Ma, a rising Junior at Lexington High School. As an artist, I explore themes of nature, climate change, immigration, and technology while blending digital and traditional arts. My art is mostly driven by storytelling and the foreshadowing of our unpredictable future. When I'm not creating, I like to play badminton, swim, and read psychological horror.",
+        bio: "Amy Ma is a rising Junior at Lexington High School. As an artist, she explores themes of nature, climate change, immigration, and technology while blending digital and traditional arts. Her art is mostly driven by storytelling and the foreshadowing of our unpredictable future. When she's not creating, she likes to play badminton, swim, and read psychological horror.",
         location: "Lexington, MA",
         style: "Digital & Traditional Arts, Environmental Storytelling",
         website: "https://instagram.com/amy.art617" as string | null,
@@ -99,7 +99,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Emma Xu",
-        bio: "I'm Emma Xu, a rising junior at Lexington High School, and I've been making art since I was five. Through my art, I attempt to highlight the intricacies of nature, putting emphasis on color and value in my work. I hope to continue making art in the future to potentially submit pieces for competition, as well as to build a larger portfolio. Outside of art, I enjoy playing guitar, baking, and playing tennis.",
+        bio: "Emma Xu is a rising junior at Lexington High School, and she's been making art since she was five. Through her art, she attempts to highlight the intricacies of nature, putting emphasis on color and value in her work. She hopes to continue making art in the future to potentially submit pieces for competition, as well as to build a larger portfolio. Outside of art, she enjoys playing guitar, baking, and playing tennis.",
         location: "Lexington, MA",
         style: "Nature Art, Color & Value Focus",
         website: "https://instagram.com/lentil.beans.art",
@@ -109,7 +109,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Alexis Zhang",
-        bio: "I'm Alexis Zhang, a multidisciplinary artist born and raised in Massachusetts, currently studying at Belmont High School. My art focuses on the complexity of human nature, exploring novel ways to unravel and express the world through my creative lens. When I'm not experimenting with art mediums, you can find me planning meetings for Belmont's Art Therapy Club, filming erhu content for social media, or reading cognitive science articles online.",
+        bio: "Alexis Zhang is a multidisciplinary artist born and raised in Massachusetts, currently studying at Belmont High School. Her art focuses on the complexity of human nature, exploring novel ways to unravel and express the world through her creative lens. When she's not experimenting with art mediums, you can find her planning meetings for Belmont's Art Therapy Club, filming erhu content for social media, or reading cognitive science articles online.",
         location: "Belmont, MA",
         style: "Multidisciplinary Art, Human Nature Studies",
         website: "https://instagram.com/azhang.artt",
@@ -119,7 +119,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Kimly Nguyen",
-        bio: "My name is Kimly Nguyen, and I am a self-taught digital artist from the class of 2027. I have been drawing using Procreate since 2020, but I have also experimented with various traditional media, including colored pencils, markers, and different paints. I resonated with digital art because it was precise, eclectic, and allowed me to capture stories and people in my style. Outside of art, I play volleyball, crochet, do nail art, and play video games.",
+        bio: "Kimly Nguyen is a self-taught digital artist from the class of 2027. She has been drawing using Procreate since 2020, but has also experimented with various traditional media, including colored pencils, markers, and different paints. She resonated with digital art because it was precise, eclectic, and allowed her to capture stories and people in her style. Outside of art, she plays volleyball, crochets, does nail art, and plays video games.",
         location: "Massachusetts",
         style: "Digital Art, Traditional Media, Storytelling",
         website: "https://instagram.com/kibblessssssss",
