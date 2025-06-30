@@ -1,255 +1,64 @@
-import { useState, useEffect } from 'react';
-import { useStripe, useElements, PaymentElement, Elements } from '@stripe/react-stripe-js';
-import { useMutation } from '@tanstack/react-query';
-import { useLocation } from 'wouter';
-import { stripePromise } from '@/lib/stripe';
+import { useState } from 'react';
+import { Link, useLocation } from 'wouter';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
-import { DemoCheckout } from '@/components/demo-checkout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, CreditCard, Shield, Truck, RotateCcw } from 'lucide-react';
+import { ArrowLeft, CreditCard, Shield, Truck, CheckCircle } from 'lucide-react';
 
-interface CheckoutFormProps {
-  clientSecret: string;
-  customerEmail: string;
-  setCustomerEmail: (email: string) => void;
-}
-
-function CheckoutForm({ clientSecret, customerEmail, setCustomerEmail }: CheckoutFormProps) {
-  const stripe = useStripe();
-  const elements = useElements();
+export default function Checkout() {
   const { toast } = useToast();
   const { items, totalPrice, clearCart } = useCart();
   const [, setLocation] = useLocation();
   const [isProcessing, setIsProcessing] = useState(false);
-
-  const confirmOrderMutation = useMutation({
-    mutationFn: async ({ paymentIntentId, customerEmail }: { paymentIntentId: string; customerEmail: string }) => {
-      const response = await apiRequest('POST', '/api/orders/confirm', {
-        paymentIntentId,
-        customerEmail,
-      });
-      return response.json();
-    },
-    onSuccess: (data) => {
-      toast({
-        title: 'Order Confirmed!',
-        description: `Thank you for your purchase! Order #${data.orderId}`,
-      });
-      clearCart();
-      setLocation('/');
-    },
-    onError: (error: any) => {
-      toast({
-        title: 'Order confirmation failed',
-        description: error.message || 'There was an issue confirming your order.',
-        variant: 'destructive',
-      });
-    },
+  const [formData, setFormData] = useState({
+    email: '',
+    cardNumber: '',
+    expiry: '',
+    cvc: '',
+    name: '',
+    address: '',
+    city: '',
+    zipCode: ''
   });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!stripe || !elements) {
-      return;
-    }
-
-    if (!customerEmail.trim()) {
-      toast({
-        title: 'Email required',
-        description: 'Please enter your email address.',
-        variant: 'destructive',
-      });
-      return;
-    }
-
     setIsProcessing(true);
-
-    try {
-      const { error, paymentIntent } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: window.location.origin,
-          receipt_email: customerEmail,
-        },
-        redirect: 'if_required',
-      });
-
-      if (error) {
-        toast({
-          title: 'Payment Failed',
-          description: error.message,
-          variant: 'destructive',
-        });
-      } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-        // Confirm the order on our backend
-        await confirmOrderMutation.mutateAsync({
-          paymentIntentId: paymentIntent.id,
-          customerEmail,
-        });
-      }
-    } catch (error: any) {
+    
+    // Simulate processing time
+    setTimeout(() => {
+      const orderId = Math.floor(Math.random() * 100000);
       toast({
-        title: 'Payment Error',
-        description: error.message || 'An unexpected error occurred.',
-        variant: 'destructive',
+        title: 'Payment Successful!',
+        description: `Thank you for your purchase! Order #${orderId}`,
       });
-    } finally {
+      clearCart();
+      setLocation('/products');
       setIsProcessing(false);
-    }
+    }, 2000);
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Customer Information */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-display text-xl text-canvasco-primary">
-            Contact Information
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="email" className="text-canvasco-neutral">
-                Email Address *
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                value={customerEmail}
-                onChange={(e) => setCustomerEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="mt-1"
-              />
-              <p className="text-sm text-canvasco-neutral mt-1">
-                We'll send your order confirmation to this email.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Payment Information */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-display text-xl text-canvasco-primary flex items-center gap-2">
-            <CreditCard className="h-5 w-5" />
-            Payment Information
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <PaymentElement 
-              options={{
-                layout: 'tabs',
-              }}
-            />
-            
-            <div className="flex items-center gap-2 text-sm text-canvasco-neutral">
-              <Shield className="h-4 w-4" />
-              <span>Your payment information is secure and encrypted</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Submit Button */}
-      <Button
-        type="submit"
-        disabled={!stripe || !elements || isProcessing || confirmOrderMutation.isPending}
-        className="w-full bg-canvasco-primary hover:bg-canvasco-primary/90 text-white py-4 text-lg font-semibold"
-      >
-        {isProcessing || confirmOrderMutation.isPending 
-          ? 'Processing...' 
-          : `Complete Order - $${totalPrice.toFixed(2)}`
-        }
-      </Button>
-
-      {/* Security & Guarantee */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm text-canvasco-neutral">
-        <div className="flex items-center justify-center gap-2">
-          <Shield className="h-4 w-4" />
-          <span>Secure Checkout</span>
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <Truck className="h-4 w-4" />
-          <span>Free Shipping $50+</span>
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <RotateCcw className="h-4 w-4" />
-          <span>30-Day Returns</span>
-        </div>
-      </div>
-    </form>
-  );
-}
-
-export default function Checkout() {
-  const { items, totalPrice, itemCount } = useCart();
-  const [, setLocation] = useLocation();
-  const [clientSecret, setClientSecret] = useState<string>('');
-  const [customerEmail, setCustomerEmail] = useState('');
-  const { toast } = useToast();
-
-  // Redirect if cart is empty
-  useEffect(() => {
-    if (itemCount === 0) {
-      toast({
-        title: 'Cart is empty',
-        description: 'Add some items to your cart before checking out.',
-        variant: 'destructive',
-      });
-      setLocation('/products');
-    }
-  }, [itemCount, setLocation, toast]);
-
-  // Create payment intent
-  useEffect(() => {
-    if (totalPrice > 0) {
-      apiRequest('POST', '/api/create-payment-intent', { 
-        amount: totalPrice,
-        currency: 'usd'
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.demo) {
-            // Demo mode - simulate client secret
-            setClientSecret('demo_mode');
-          } else {
-            setClientSecret(data.clientSecret);
-          }
-        })
-        .catch((error) => {
-          toast({
-            title: 'Payment setup failed',
-            description: error.message || 'Failed to initialize payment.',
-            variant: 'destructive',
-          });
-        });
-    }
-  }, [totalPrice, toast]);
-
-  if (itemCount === 0) {
-    return null; // Will redirect via useEffect
-  }
-
-  if (!clientSecret) {
+  if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-canvasco-secondary py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-canvasco-primary"></div>
-          </div>
-        </div>
+      <div className="min-h-screen bg-canvasco-secondary flex items-center justify-center">
+        <Card className="max-w-md mx-auto">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold text-canvasco-primary mb-4">Cart is Empty</h2>
+            <p className="text-gray-600 mb-6">Add some items to your cart before checking out.</p>
+            <Button asChild>
+              <Link href="/products">Continue Shopping</Link>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -258,147 +67,225 @@ export default function Checkout() {
     <div className="min-h-screen bg-canvasco-secondary py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <Button 
-            variant="ghost" 
-            onClick={() => setLocation('/products')}
-            className="text-canvasco-neutral hover:text-canvasco-primary mb-4"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Continue Shopping
+        <div className="flex items-center mb-8">
+          <Button variant="ghost" asChild className="mr-4">
+            <Link href="/products">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Shop
+            </Link>
           </Button>
-          
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-canvasco-primary">
-            Checkout
-          </h1>
-          <p className="text-canvasco-neutral mt-2">
-            Complete your order for {itemCount} item{itemCount !== 1 ? 's' : ''}
-          </p>
+          <h1 className="font-display text-3xl font-bold text-canvasco-primary">Checkout</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Order Summary */}
-          <div className="lg:order-2">
-            <Card className="sticky top-8">
-              <CardHeader>
-                <CardTitle className="font-display text-xl text-canvasco-primary">
-                  Order Summary
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {/* Cart Items */}
+          {/* Payment Form */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <CreditCard className="h-5 w-5 mr-2" />
+                Payment Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Contact Information */}
+                <div>
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+
+                {/* Payment Details */}
                 <div className="space-y-4">
-                  {items.map((item) => {
-                    const price = parseFloat(item.product.salePrice || item.product.price);
-                    const itemTotal = price * item.quantity;
-
-                    return (
-                      <div key={item.id} className="flex items-center space-x-4">
-                        <div className="relative">
-                          <img
-                            src={item.product.image}
-                            alt={item.product.name}
-                            className="w-16 h-16 object-cover rounded-lg"
-                          />
-                          <Badge 
-                            variant="secondary" 
-                            className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center text-xs"
-                          >
-                            {item.quantity}
-                          </Badge>
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-canvasco-primary truncate">
-                            {item.product.name}
-                          </h4>
-                          <p className="text-sm text-canvasco-accent">
-                            by {item.product.artist.name}
-                          </p>
-                          <div className="flex items-center justify-between mt-1">
-                            <span className="text-sm text-canvasco-neutral">
-                              ${price.toFixed(2)} × {item.quantity}
-                            </span>
-                            <span className="font-semibold text-canvasco-primary">
-                              ${itemTotal.toFixed(2)}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <Separator />
-
-                {/* Totals */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-canvasco-neutral">
-                    <span>Subtotal</span>
-                    <span>${totalPrice.toFixed(2)}</span>
+                  <h3 className="font-semibold text-canvasco-primary">Card Information</h3>
+                  
+                  <div>
+                    <Label htmlFor="cardNumber">Card Number</Label>
+                    <Input
+                      id="cardNumber"
+                      type="text"
+                      value={formData.cardNumber}
+                      onChange={(e) => handleInputChange('cardNumber', e.target.value)}
+                      placeholder="1234 5678 9012 3456"
+                      maxLength={19}
+                      required
+                    />
                   </div>
-                  <div className="flex justify-between text-canvasco-neutral">
-                    <span>Shipping</span>
-                    <span>{totalPrice >= 50 ? 'Free' : '$5.99'}</span>
-                  </div>
-                  {totalPrice < 50 && (
-                    <div className="text-xs text-canvasco-accent">
-                      Add ${(50 - totalPrice).toFixed(2)} more for free shipping
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="expiry">Expiry Date</Label>
+                      <Input
+                        id="expiry"
+                        type="text"
+                        value={formData.expiry}
+                        onChange={(e) => handleInputChange('expiry', e.target.value)}
+                        placeholder="MM/YY"
+                        maxLength={5}
+                        required
+                      />
                     </div>
-                  )}
-                  
-                  <Separator />
-                  
-                  <div className="flex justify-between text-lg font-bold text-canvasco-primary">
-                    <span>Total</span>
-                    <span>${(totalPrice + (totalPrice >= 50 ? 0 : 5.99)).toFixed(2)}</span>
+                    <div>
+                      <Label htmlFor="cvc">CVC</Label>
+                      <Input
+                        id="cvc"
+                        type="text"
+                        value={formData.cvc}
+                        onChange={(e) => handleInputChange('cvc', e.target.value)}
+                        placeholder="123"
+                        maxLength={4}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="name">Cardholder Name</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder="John Doe"
+                      required
+                    />
                   </div>
                 </div>
 
-                {/* Eco-friendly message */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-sm">
-                  <p className="text-green-800 font-semibold mb-1">🌱 Eco-Friendly Purchase</p>
-                  <p className="text-green-700">
-                    This order supports sustainable practices and emerging artists.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                {/* Billing Address */}
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-canvasco-primary">Billing Address</h3>
+                  
+                  <div>
+                    <Label htmlFor="address">Address</Label>
+                    <Input
+                      id="address"
+                      type="text"
+                      value={formData.address}
+                      onChange={(e) => handleInputChange('address', e.target.value)}
+                      placeholder="123 Main Street"
+                      required
+                    />
+                  </div>
 
-          {/* Checkout Form */}
-          <div className="lg:order-1">
-            {clientSecret === 'demo_mode' || !stripePromise ? (
-              <DemoCheckout 
-                customerEmail={customerEmail}
-                setCustomerEmail={setCustomerEmail}
-              />
-            ) : (
-              <Elements 
-                stripe={stripePromise} 
-                options={{ 
-                  clientSecret,
-                  appearance: {
-                    theme: 'stripe',
-                    variables: {
-                      colorPrimary: '#2D5E3A',
-                      colorBackground: '#ffffff',
-                      colorText: '#374151',
-                      colorDanger: '#ef4444',
-                      fontFamily: 'Inter, sans-serif',
-                      borderRadius: '8px',
-                    },
-                  },
-                }}
-              >
-                <CheckoutForm 
-                  clientSecret={clientSecret}
-                  customerEmail={customerEmail}
-                  setCustomerEmail={setCustomerEmail}
-                />
-              </Elements>
-            )}
-          </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="city">City</Label>
+                      <Input
+                        id="city"
+                        type="text"
+                        value={formData.city}
+                        onChange={(e) => handleInputChange('city', e.target.value)}
+                        placeholder="New York"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="zipCode">ZIP Code</Label>
+                      <Input
+                        id="zipCode"
+                        type="text"
+                        value={formData.zipCode}
+                        onChange={(e) => handleInputChange('zipCode', e.target.value)}
+                        placeholder="10001"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <Button 
+                  type="submit" 
+                  className="w-full bg-canvasco-accent hover:bg-canvasco-accent/90"
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle className="h-4 w-4 mr-2" />
+                      Complete Order - ${totalPrice.toFixed(2)}
+                    </>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Order Summary */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Order Summary</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <div key={item.id} className="flex items-center space-x-4">
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-16 h-16 object-contain rounded-lg bg-gray-50"
+                    />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-canvasco-primary">{item.product.name}</h4>
+                      <p className="text-sm text-gray-600">by {item.product.artist.name}</p>
+                      <p className="text-sm text-canvasco-accent">Qty: {item.quantity}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-semibold">${(item.product.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Separator className="my-6" />
+
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Subtotal</span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Shipping</span>
+                  <span className="text-canvasco-accent">Free</span>
+                </div>
+                <Separator />
+                <div className="flex justify-between text-lg font-bold">
+                  <span>Total</span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </div>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center text-sm text-gray-600">
+                  <Shield className="h-4 w-4 mr-2 text-canvasco-accent" />
+                  Secure 256-bit SSL encryption
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <Truck className="h-4 w-4 mr-2 text-canvasco-accent" />
+                  Free shipping on all orders
+                </div>
+              </div>
+
+              {/* Demo Notice */}
+              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-sm text-yellow-800">
+                  <strong>Demo Mode:</strong> This is a demonstration checkout. Any payment details entered will show a success message.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
