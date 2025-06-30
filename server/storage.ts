@@ -158,14 +158,14 @@ export class MemStorage implements IStorage {
       });
     }
 
-    // Seed products - using actual tote bag design images from PDF once available
+    // Seed products - using placeholder tote bag images until individual designs are extracted from PDF
     const productsData = [
       {
         name: "Amy Ma Design Tote",
         description: "Original tote bag design by Amy Ma, featuring her signature environmental storytelling through digital and traditional art techniques.",
         price: "36.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1582142306909-195724d06748?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 1,
         category: "tote-bag",
         inStock: true,
@@ -176,7 +176,7 @@ export class MemStorage implements IStorage {
         description: "Original tote bag design by Emma Xu, showcasing her intricate nature art with emphasis on color and natural details.",
         price: "34.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 2,
         category: "tote-bag",
         inStock: true,
@@ -187,7 +187,7 @@ export class MemStorage implements IStorage {
         description: "Original tote bag design by Alexis Zhang, reflecting her multidisciplinary approach to exploring human nature complexity.",
         price: "35.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 3,
         category: "tote-bag",
         inStock: true,
@@ -198,7 +198,7 @@ export class MemStorage implements IStorage {
         description: "Original tote bag design by Kimly Nguyen, featuring her digital art storytelling style created with Procreate techniques.",
         price: "33.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 4,
         category: "tote-bag",
         inStock: true,
@@ -209,7 +209,7 @@ export class MemStorage implements IStorage {
         description: "Original tote bag design by Angela Wang, inspired by architecture, objects, scenery, and cultural expression themes.",
         price: "35.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 5,
         category: "tote-bag",
         inStock: true,
@@ -220,7 +220,7 @@ export class MemStorage implements IStorage {
         description: "Original tote bag design by Lucas Dai, exploring humanity's relationship with nature through his colored pencil and watercolor artistry.",
         price: "34.99",
         salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         artistId: 6,
         category: "tote-bag",
         inStock: true,
