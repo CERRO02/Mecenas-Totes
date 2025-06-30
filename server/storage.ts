@@ -175,7 +175,7 @@ export class MemStorage implements IStorage {
         description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
         price: "36.99",
         salePrice: null,
-        image: "/api/images/carbon-memory.png",
+        image: "/api/images/carbon-memory-real.png",
         artistId: 1,
         category: "tote-bag",
         inStock: true,
