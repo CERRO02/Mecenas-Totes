@@ -187,9 +187,27 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const clearCart = async () => {
-    // Remove all items one by one (could be optimized with a bulk delete endpoint)
-    for (const item of items) {
-      await removeFromCart(item.id);
+    // Silent clear for checkout completion - no toast messages
+    const originalFetch = window.fetch;
+    window.fetch = (url, options = {}) => {
+      return originalFetch(url, {
+        ...options,
+        headers: {
+          ...options.headers,
+          'X-Session-ID': sessionId,
+        },
+      });
+    };
+
+    try {
+      // Remove all items silently
+      for (const item of items) {
+        await apiRequest('DELETE', `/api/cart/${item.id}`);
+      }
+      // Invalidate cache to refresh the cart
+      queryClient.invalidateQueries({ queryKey: ['/api/cart'] });
+    } finally {
+      window.fetch = originalFetch;
     }
   };
 
