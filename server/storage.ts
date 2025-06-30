@@ -226,17 +226,7 @@ export class MemStorage implements IStorage {
         inStock: true,
         featured: false
       },
-      {
-        name: "Jeffrey Liu Design Tote",
-        description: "Original tote bag design by Jeffrey Liu - coming soon! Watch this space for his unique artistic perspective.",
-        price: "35.99",
-        salePrice: null,
-        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
-        artistId: 7, // Will be updated when Jeffrey is added
-        category: "tote-bag",
-        inStock: false, // Coming soon
-        featured: false
-      },
+
 
     ];
 
@@ -280,10 +270,17 @@ export class MemStorage implements IStorage {
   // Products
   async getProducts(): Promise<ProductWithArtist[]> {
     const products = Array.from(this.products.values());
-    return products.map(product => ({
-      ...product,
-      artist: this.artists.get(product.artistId)!
-    }));
+    return products.map(product => {
+      const artist = this.artists.get(product.artistId);
+      if (!artist) {
+        console.warn(`Artist with ID ${product.artistId} not found for product ${product.name}`);
+        return null;
+      }
+      return {
+        ...product,
+        artist
+      };
+    }).filter(Boolean) as ProductWithArtist[];
   }
 
   async getProduct(id: number): Promise<ProductWithArtist | undefined> {
@@ -298,10 +295,17 @@ export class MemStorage implements IStorage {
 
   async getFeaturedProducts(): Promise<ProductWithArtist[]> {
     const products = Array.from(this.products.values()).filter(p => p.featured);
-    return products.map(product => ({
-      ...product,
-      artist: this.artists.get(product.artistId)!
-    }));
+    return products.map(product => {
+      const artist = this.artists.get(product.artistId);
+      if (!artist) {
+        console.warn(`Artist with ID ${product.artistId} not found for product ${product.name}`);
+        return null;
+      }
+      return {
+        ...product,
+        artist
+      };
+    }).filter(Boolean) as ProductWithArtist[];
   }
 
   async getProductsByArtist(artistId: number): Promise<ProductWithArtist[]> {
