@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/amy.art617" as string | null,
         featured: true as boolean | null,
         featuredWeek: 52 as number | null,
-        image: "/attached_assets/Screenshot%202025-06-25%20at%2011.16.42%E2%80%AFAM_1750864605993.png"
+        image: "/api/images/amy-ma.jpg"
       },
       {
         name: "Emma Xu",
@@ -105,7 +105,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/lentil.beans.art",
         featured: false,
         featuredWeek: null,
-        image: "/emma-xu.png"
+        image: "/api/images/emma-xu.jpg"
       },
       {
         name: "Alexis Zhang",
@@ -115,7 +115,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/azhang.artt",
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/11701750971815_.pic_1750971832933.jpg"
+        image: "/api/images/alexis-zhang.jpg"
       },
       {
         name: "Kimly Nguyen",
@@ -125,7 +125,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/kibblessssssss",
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/WechatIMG1171_1750972005584.jpg"
+        image: "/api/images/kimly-nguyen.jpg"
       },
       {
         name: "Angela Wang",
