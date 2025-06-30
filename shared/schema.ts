@@ -11,7 +11,7 @@ export const artists = pgTable("artists", {
   website: text("website"),
   featured: boolean("featured").default(false),
   featuredWeek: integer("featured_week"),
-  image: text("image").notNull(),
+  image: text("image"),
 });
 
 export const products = pgTable("products", {
