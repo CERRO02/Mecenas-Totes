@@ -7,13 +7,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Serve attached assets with proper MIME types
-app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets'), {
+// Serve attached assets - place before other middleware
+app.use('/attached_assets', express.static(path.resolve('attached_assets'), {
+  fallthrough: false,
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.png')) {
       res.setHeader('Content-Type', 'image/png');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
     } else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
       res.setHeader('Content-Type', 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
     }
   }
 }));
