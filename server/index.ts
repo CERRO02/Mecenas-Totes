@@ -7,26 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Custom route to serve attached assets with proper handling of spaces in filenames
-app.get('/attached_assets/:filename(*)', (req, res) => {
-  const filename = decodeURIComponent(req.params.filename);
-  const filePath = path.resolve('attached_assets', filename);
-  
-  // Security check - ensure file is within attached_assets directory
-  if (!filePath.startsWith(path.resolve('attached_assets'))) {
-    return res.status(403).send('Forbidden');
-  }
-  
-  // Set proper content type based on extension
-  if (filename.toLowerCase().endsWith('.png')) {
-    res.setHeader('Content-Type', 'image/png');
-  } else if (filename.toLowerCase().endsWith('.jpg') || filename.toLowerCase().endsWith('.jpeg')) {
-    res.setHeader('Content-Type', 'image/jpeg');
-  }
-  
-  res.setHeader('Cache-Control', 'public, max-age=3600');
-  res.sendFile(filePath);
-});
+// Serve static files
+app.use('/attached_assets', express.static('attached_assets'));
 
 app.use((req, res, next) => {
   const start = Date.now();
