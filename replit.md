@@ -134,7 +134,9 @@ Changelog:
 ✓ Featured Kimly as self-taught digital artist specializing in Procreate and storytelling
 ✓ Added fifth artist: Angela Wang from Needham High School
 ✓ Featured Angela focusing on architecture, objects, scenery, and cultural expression
-✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, and Angela Wang
+✓ Added sixth artist: Lucas Dai from Lexington High School
+✓ Featured Lucas specializing in colored pencil, graphite, oil paint, and watercolor with focus on humanity and nature
+✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, Angela Wang, and Lucas Dai
 
 → Website now features authentic artist content alongside demo functionality
 → Ready for Stripe integration when user is 18+ or has guardian assistance

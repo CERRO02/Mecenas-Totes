@@ -136,6 +136,16 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/attached_assets/image_1751241087527.png"
+      },
+      {
+        name: "Lucas Dai",
+        bio: "Lucas is a rising junior at Lexington High School. He has long worked with colored pencil and graphite but has recently begun experimenting with new mediums such as oil paint and watercolor. Through his art, he explores questions about humanity and its relationship with the natural world. He hopes to continue creating and sharing his work with a wider audience in the future. Outside of drawing, Lucas enjoys playing tennis, competing in Science Olympiad, and spending time with friends.",
+        location: "Lexington, MA",
+        style: "Colored Pencil, Graphite, Oil Paint, Watercolor",
+        website: "https://instagram.com/lucassdai",
+        featured: false,
+        featuredWeek: null,
+        image: "/attached_assets/WechatIMG1178_1751242295860.jpg"
       }
     ];
 
