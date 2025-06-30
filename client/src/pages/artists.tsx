@@ -121,6 +121,7 @@ export default function Artists() {
                          artist.name === 'Kimly Nguyen' ? 'kimlynguyen801@gmail.com' :
                          artist.name === 'Angela Wang' ? 'angelavveivvei@gmail.com' :
                          artist.name === 'Lucas Dai' ? 'lucasldai09@gmail.com' :
+                         artist.name === 'Jeffrey Liu' ? 'Contact via Instagram' :
                          'Contact available'}
                       </span>
                     </div>

@@ -146,6 +146,16 @@ export class MemStorage implements IStorage {
         featured: false,
         featuredWeek: null,
         image: "/attached_assets/WechatIMG1178_1751242295860.jpg"
+      },
+      {
+        name: "Jeffrey Liu",
+        bio: "Jeffrey Liu is an emerging artist exploring themes of nature and tranquility through traditional landscape painting techniques. His work captures serene mountain scenes with careful attention to atmosphere and natural beauty.",
+        location: "Massachusetts",
+        style: "Traditional Landscape, Chinese Art, Nature Scenes",
+        website: null,
+        featured: false,
+        featuredWeek: null,
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.19%20PM_1751243541400.png"
       }
     ];
 
@@ -158,70 +168,81 @@ export class MemStorage implements IStorage {
       });
     }
 
-    // Seed products - using placeholder tote bag images until individual designs are extracted from PDF
+    // Seed products - using actual tote bag design images
     const productsData = [
       {
-        name: "Amy Ma Design Tote",
-        description: "Original tote bag design by Amy Ma, featuring her signature environmental storytelling through digital and traditional art techniques.",
+        name: "Carbon Memory Tote",
+        description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
         price: "36.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1582142306909-195724d06748?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.32%20PM_1751243554095.png",
         artistId: 1,
         category: "tote-bag",
         inStock: true,
         featured: true
       },
       {
-        name: "Emma Xu Design Tote",
-        description: "Original tote bag design by Emma Xu, showcasing her intricate nature art with emphasis on color and natural details.",
+        name: "Garden Party Tote",
+        description: "Emma Xu's 'Garden Party' - a whimsical celebration of nature featuring adorable woodland creatures, flowers, and natural elements in vibrant colors.",
         price: "34.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.08%20PM_1751243530509.png",
         artistId: 2,
         category: "tote-bag",
         inStock: true,
         featured: true
       },
       {
-        name: "Alexis Zhang Design Tote",
-        description: "Original tote bag design by Alexis Zhang, reflecting her multidisciplinary approach to exploring human nature complexity.",
+        name: "Daydream Tote",
+        description: "Alexis Zhang's 'Daydream' - an introspective piece exploring human consciousness with swirling blues and a contemplative figure surrounded by dreamlike elements.",
         price: "35.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.40%20PM_1751243562143.png",
         artistId: 3,
         category: "tote-bag",
         inStock: true,
         featured: false
       },
       {
-        name: "Kimly Nguyen Design Tote",
-        description: "Original tote bag design by Kimly Nguyen, featuring her digital art storytelling style created with Procreate techniques.",
+        name: "Happy Soup Tote",
+        description: "Kimly Nguyen's 'Happy Soup' - a cheerful digital art piece featuring a delicious ramen bowl with playful orange lettering and cute character details.",
         price: "33.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.31.59%20PM_1751243521394.png",
         artistId: 4,
         category: "tote-bag",
         inStock: true,
         featured: false
       },
       {
-        name: "Angela Wang Design Tote",
-        description: "Original tote bag design by Angela Wang, inspired by architecture, objects, scenery, and cultural expression themes.",
+        name: "Café July Tote",
+        description: "Angela Wang's 'Café July' - a detailed architectural drawing of a charming café scene with intricate line work showcasing her love for buildings and cultural spaces.",
         price: "35.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.31.47%20PM_1751243510114.png",
         artistId: 5,
         category: "tote-bag",
         inStock: true,
         featured: false
       },
       {
-        name: "Lucas Dai Design Tote",
-        description: "Original tote bag design by Lucas Dai, exploring humanity's relationship with nature through his colored pencil and watercolor artistry.",
+        name: "Don't Litter This Moment Tote",
+        description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
         price: "34.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.50%20PM_1751243572050.png",
         artistId: 6,
+        category: "tote-bag",
+        inStock: true,
+        featured: false
+      },
+      {
+        name: "悬空山桂 (Hanging Mountain Osmanthus) Tote",
+        description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
+        price: "36.99",
+        salePrice: null,
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.19%20PM_1751243541400.png",
+        artistId: 7,
         category: "tote-bag",
         inStock: true,
         featured: false
