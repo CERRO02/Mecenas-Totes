@@ -58,11 +58,24 @@ export default function Artists() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
                 {/* Photo Section */}
                 <div className="relative">
-                  <img 
-                    src={artist.image} 
-                    alt={`Artist ${artist.name}`} 
-                    className="w-full h-48 md:h-64 object-cover rounded-lg"
-                  />
+                  {artist.image ? (
+                    <img 
+                      src={artist.image} 
+                      alt={`Artist ${artist.name}`} 
+                      className="w-full h-48 md:h-64 object-cover rounded-lg"
+                    />
+                  ) : (
+                    <div className="w-full h-48 md:h-64 bg-canvasco-primary/10 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-canvasco-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <span className="text-2xl font-bold text-canvasco-primary">
+                            {artist.name.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                        <p className="text-sm text-canvasco-neutral/60">Photo coming soon</p>
+                      </div>
+                    </div>
+                  )}
                   {artist.featured && (
                     <div className="absolute top-2 right-2 bg-canvasco-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
                       Featured

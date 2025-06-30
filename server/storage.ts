@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/amy.art617" as string | null,
         featured: true as boolean | null,
         featuredWeek: 52 as number | null,
-        image: "https://ui-avatars.com/api/?name=Amy+Ma&background=8fbc8f&color=fff&size=400"
+        image: null
       },
       {
         name: "Emma Xu",
@@ -105,7 +105,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/lentil.beans.art",
         featured: false,
         featuredWeek: null,
-        image: "https://ui-avatars.com/api/?name=Emma+Xu&background=8fbc8f&color=fff&size=400"
+        image: null
       },
       {
         name: "Alexis Zhang",
@@ -282,7 +282,8 @@ export class MemStorage implements IStorage {
       id,
       website: insertArtist.website || null,
       featured: insertArtist.featured || null,
-      featuredWeek: insertArtist.featuredWeek || null
+      featuredWeek: insertArtist.featuredWeek || null,
+      image: insertArtist.image ?? null
     };
     this.artists.set(id, artist);
     return artist;
