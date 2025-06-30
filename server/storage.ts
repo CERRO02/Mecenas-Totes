@@ -135,7 +135,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/alegnaaa.art",
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/image_1751241087527.png"
+        image: "/api/images/angela-wang.png"
       },
       {
         name: "Lucas Dai",
@@ -145,7 +145,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/lucassdai",
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/WechatIMG1178_1751242295860.jpg"
+        image: "/api/images/lucas-dai.jpg"
       },
       {
         name: "Jeffrey Liu",
@@ -155,7 +155,7 @@ export class MemStorage implements IStorage {
         website: null,
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.19%20PM_1751243541400.png"
+        image: "/api/images/hanging-mountain.png"
       }
     ];
 
