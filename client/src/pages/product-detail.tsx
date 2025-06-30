@@ -145,7 +145,7 @@ export default function ProductDetail() {
             {/* Artist Info */}
             <div className="flex items-center gap-3">
               <img
-                src={product.artist.image}
+                src={product.artist.image || undefined}
                 alt={product.artist.name}
                 className="w-12 h-12 rounded-full object-cover"
               />
@@ -279,7 +279,7 @@ export default function ProductDetail() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
                 <img
-                  src={product.artist.image}
+                  src={product.artist.image || undefined}
                   alt={product.artist.name}
                   className="w-full aspect-square object-cover rounded-2xl"
                 />

@@ -65,7 +65,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-sm text-canvasco-accent font-semibold">
             {product.artist.name}
           </span>
-          <QrCode className="h-4 w-4 text-canvasco-neutral ml-2" title="QR Code included" />
+          <QrCode className="h-4 w-4 text-canvasco-neutral ml-2" />
         </div>
         
         <Link href={`/products/${product.id}`} className="group">
