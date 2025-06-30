@@ -173,7 +173,7 @@ export class MemStorage implements IStorage {
       {
         name: "Carbon Memory Tote",
         description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
-        price: "36.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/carbon-memory-real.png",
         artistId: 1,
@@ -184,7 +184,7 @@ export class MemStorage implements IStorage {
       {
         name: "Garden Party Tote",
         description: "Emma Xu's 'Garden Party' - a whimsical celebration of nature featuring adorable woodland creatures, flowers, and natural elements in vibrant colors.",
-        price: "34.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/garden-party.png",
         artistId: 2,
@@ -195,7 +195,7 @@ export class MemStorage implements IStorage {
       {
         name: "Daydream Tote",
         description: "Alexis Zhang's 'Daydream' - an introspective piece exploring human consciousness with swirling blues and a contemplative figure surrounded by dreamlike elements.",
-        price: "35.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/daydream.png",
         artistId: 3,
@@ -206,7 +206,7 @@ export class MemStorage implements IStorage {
       {
         name: "Happy Soup Tote",
         description: "Kimly Nguyen's 'Happy Soup' - a cheerful digital art piece featuring a delicious ramen bowl with playful orange lettering and cute character details.",
-        price: "33.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/happy-soup.png",
         artistId: 4,
@@ -217,7 +217,7 @@ export class MemStorage implements IStorage {
       {
         name: "Café July Tote",
         description: "Angela Wang's 'Café July' - a detailed architectural drawing of a charming café scene with intricate line work showcasing her love for buildings and cultural spaces.",
-        price: "35.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/cafe-july.png",
         artistId: 5,
@@ -228,7 +228,7 @@ export class MemStorage implements IStorage {
       {
         name: "Don't Litter This Moment Tote",
         description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
-        price: "34.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/dont-litter.png",
         artistId: 6,
@@ -239,7 +239,7 @@ export class MemStorage implements IStorage {
       {
         name: "悬空山桂 (Hanging Mountain Osmanthus) Tote",
         description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
-        price: "36.99",
+        price: "25.00",
         salePrice: null,
         image: "/api/images/hanging-mountain.png",
         artistId: 7,
