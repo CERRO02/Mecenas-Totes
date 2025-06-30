@@ -105,7 +105,7 @@ export class MemStorage implements IStorage {
         website: "https://instagram.com/lentil.beans.art",
         featured: false,
         featuredWeek: null,
-        image: null
+        image: "/api/images/emma-xu.jpg"
       },
       {
         name: "Alexis Zhang",
