@@ -141,6 +141,7 @@ Changelog:
 ✓ Updated product catalog with real artwork: Carbon Memory, Garden Party, Daydream, Happy Soup, Café July, Don't Litter This Moment, and 悬空山桂
 ✓ Shop now displays actual artist-designed tote bags with proper names and descriptions
 ✓ Featured authentic artists: Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, Angela Wang, Lucas Dai, and Jeffrey Liu
+✓ Added Jeffrey Liu's authentic photo to complete the artist showcase
 ✓ Fixed image serving issues by creating custom /api/images endpoint
 ✓ Resolved Vite catch-all route conflicts with static file serving
 ✓ Updated image display to show full tote bag designs using object-contain instead of object-cover
