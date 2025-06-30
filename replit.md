@@ -136,9 +136,14 @@ Changelog:
 ✓ Featured Angela focusing on architecture, objects, scenery, and cultural expression
 ✓ Added sixth artist: Lucas Dai from Lexington High School
 ✓ Featured Lucas specializing in colored pencil, graphite, oil paint, and watercolor with focus on humanity and nature
+✓ Added authentic tote bag collection with 7 designs from PDF drafts
+✓ Created product catalog linking each tote bag to its artist profile
+✓ Updated shop page from placeholder to full product display with featured sections
+✓ Added Jeffrey Liu placeholder for 7th design (coming soon)
 ✓ Removed all fake AI-generated artists, keeping only authentic artists Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, Angela Wang, and Lucas Dai
 
-→ Website now features authentic artist content alongside demo functionality
+→ Website now features complete authentic artist and product content
+→ Shop page displays real tote bag designs with artist attribution
 → Ready for Stripe integration when user is 18+ or has guardian assistance
 → Company rebranded from CanvasCo to Mecenas Totes across all pages and documentation
 → Updated to transparent Mecenas Totes logo across website and favicon

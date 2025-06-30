@@ -158,96 +158,86 @@ export class MemStorage implements IStorage {
       });
     }
 
-    // Seed products
+    // Seed products - using actual tote bag design images from PDF once available
     const productsData = [
       {
-        name: "Climate Future Tote",
-        description: "Amy Ma's powerful environmental storytelling design explores climate change themes through digital art that foreshadows our planet's future.",
+        name: "Amy Ma Design Tote",
+        description: "Original tote bag design by Amy Ma, featuring her signature environmental storytelling through digital and traditional art techniques.",
         price: "36.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
         artistId: 1,
         category: "tote-bag",
         inStock: true,
         featured: true
       },
       {
-        name: "Nature's Details Tote",
-        description: "Emma Xu's intricate nature art celebrates the delicate details often overlooked in the natural world, with stunning color and value work.",
+        name: "Emma Xu Design Tote",
+        description: "Original tote bag design by Emma Xu, showcasing her intricate nature art with emphasis on color and natural details.",
         price: "34.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
         artistId: 2,
         category: "tote-bag",
         inStock: true,
         featured: true
       },
       {
-        name: "Colorful Petals Tote",
-        description: "Emma Xu's vibrant exploration of flower petals and botanical forms, showcasing her mastery of color relationships and natural beauty.",
-        price: "32.99",
+        name: "Alexis Zhang Design Tote",
+        description: "Original tote bag design by Alexis Zhang, reflecting her multidisciplinary approach to exploring human nature complexity.",
+        price: "35.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-        artistId: 2,
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        artistId: 3,
         category: "tote-bag",
         inStock: true,
         featured: false
       },
       {
-        name: "Geometric Harmony Tote",
-        description: "Minimalist geometric patterns in earth tones, perfect for the modern eco-conscious consumer.",
-        price: "36.99",
-        salePrice: "24.99",
-        image: "https://pixabay.com/get/g41ea7c2a46d73b9057f46861c6e68590218616ce4cdf3a60a265bf148d40218348c5a7328ec7d679a705438ddfd29c0fccc5a5dc6a1a720fdd5672adfc5f0882_1280.jpg",
+        name: "Kimly Nguyen Design Tote",
+        description: "Original tote bag design by Kimly Nguyen, featuring her digital art storytelling style created with Procreate techniques.",
+        price: "33.99",
+        salePrice: null,
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
         artistId: 4,
         category: "tote-bag",
         inStock: true,
-        featured: true
+        featured: false
       },
       {
-        name: "Urban Expression Tote",
-        description: "Bold street art meets sustainable fashion in this powerful design that speaks to urban creativity.",
-        price: "38.99",
+        name: "Angela Wang Design Tote",
+        description: "Original tote bag design by Angela Wang, inspired by architecture, objects, scenery, and cultural expression themes.",
+        price: "35.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
         artistId: 5,
         category: "tote-bag",
         inStock: true,
-        featured: true
+        featured: false
       },
       {
-        name: "Immigration Stories Tote",
-        description: "Amy Ma's blend of traditional and digital techniques tells the story of human migration and cultural connection.",
-        price: "38.99",
-        salePrice: null,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-        artistId: 1,
-        category: "tote-bag",
-        inStock: true,
-        featured: true
-      },
-      {
-        name: "Tech & Nature Harmony Tote",
-        description: "Amy explores the intersection of technology and nature in this thought-provoking design about our digital future.",
+        name: "Lucas Dai Design Tote",
+        description: "Original tote bag design by Lucas Dai, exploring humanity's relationship with nature through his colored pencil and watercolor artistry.",
         price: "34.99",
         salePrice: null,
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-        artistId: 1,
-        category: "tote-bag",
-        inStock: true,
-        featured: true
-      },
-      {
-        name: "Abstract Waves Tote",
-        description: "Flowing abstract patterns inspired by ocean waves and natural movement.",
-        price: "35.99",
-        salePrice: null,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500",
-        artistId: 2,
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        artistId: 6,
         category: "tote-bag",
         inStock: true,
         featured: false
-      }
+      },
+      {
+        name: "Jeffrey Liu Design Tote",
+        description: "Original tote bag design by Jeffrey Liu - coming soon! Watch this space for his unique artistic perspective.",
+        price: "35.99",
+        salePrice: null,
+        image: "/attached_assets/tote_design_drafts_1751242641261.pdf",
+        artistId: 7, // Will be updated when Jeffrey is added
+        category: "tote-bag",
+        inStock: false, // Coming soon
+        featured: false
+      },
+
     ];
 
     for (const productData of productsData) {
