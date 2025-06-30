@@ -141,9 +141,15 @@ Changelog:
 ✓ Updated product catalog with real artwork: Carbon Memory, Garden Party, Daydream, Happy Soup, Café July, Don't Litter This Moment, and 悬空山桂
 ✓ Shop now displays actual artist-designed tote bags with proper names and descriptions
 ✓ Featured authentic artists: Amy Ma, Emma Xu, Alexis Zhang, Kimly Nguyen, Angela Wang, Lucas Dai, and Jeffrey Liu
+✓ Fixed image serving issues by creating custom /api/images endpoint
+✓ Resolved Vite catch-all route conflicts with static file serving
+✓ Updated image display to show full tote bag designs using object-contain instead of object-cover
+✓ Simplified image filenames to avoid special character issues in URLs
 
-→ Website now features complete authentic artist and product content
-→ Shop page displays real tote bag designs with artist attribution
+→ All 7 authentic tote bag designs now display properly in shop and product detail pages
+→ Amy Ma's "Carbon Memory" tote features her environmental climate change artwork
+→ Images show complete tote bag designs without cropping
+→ Custom image API endpoint bypasses frontend routing conflicts
 → Ready for Stripe integration when user is 18+ or has guardian assistance
 → Company rebranded from CanvasCo to Mecenas Totes across all pages and documentation
 → Updated to transparent Mecenas Totes logo across website and favicon
