@@ -10,9 +10,7 @@ export default function Products() {
     queryKey: ["/api/products"],
   });
 
-  const { data: featuredProducts } = useQuery<ProductWithArtist[]>({
-    queryKey: ["/api/products/featured"],
-  });
+
 
   if (isLoading) {
     return (
@@ -54,25 +52,7 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Featured Products */}
-      {featuredProducts && featuredProducts.length > 0 && (
-        <div className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-canvasco-neutral mb-4">Featured Designs</h2>
-              <p className="text-canvasco-neutral/70 max-w-2xl mx-auto">
-                Highlighted creations from our talented artist community
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {/* All Products */}
       <div className="py-16 bg-gray-50">
