@@ -155,7 +155,7 @@ export class MemStorage implements IStorage {
         website: null,
         featured: false,
         featuredWeek: null,
-        image: "/attached_assets/Screenshot 2025-06-29 at 8.32.19 PM_1751243541400.png"
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.19%20PM_1751243541400.png"
       }
     ];
 
@@ -230,7 +230,7 @@ export class MemStorage implements IStorage {
         description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
         price: "34.99",
         salePrice: null,
-        image: "/attached_assets/Screenshot 2025-06-29 at 8.32.50 PM_1751243572050.png",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.50%20PM_1751243572050.png",
         artistId: 6,
         category: "tote-bag",
         inStock: true,
@@ -241,7 +241,7 @@ export class MemStorage implements IStorage {
         description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
         price: "36.99",
         salePrice: null,
-        image: "/attached_assets/Screenshot 2025-06-29 at 8.32.19 PM_1751243541400.png",
+        image: "/attached_assets/Screenshot%202025-06-29%20at%208.32.19%20PM_1751243541400.png",
         artistId: 7,
         category: "tote-bag",
         inStock: true,
