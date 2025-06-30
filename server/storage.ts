@@ -155,7 +155,7 @@ export class MemStorage implements IStorage {
         website: null,
         featured: false,
         featuredWeek: null,
-        image: "/api/images/hanging-mountain.png"
+        image: "/api/images/jeffrey-liu.jpg"
       }
     ];
 
