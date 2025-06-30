@@ -4,6 +4,8 @@ import Stripe from "stripe";
 import { storage } from "./storage";
 import { insertCartItemSchema, insertNewsletterSubscriberSchema } from "@shared/schema";
 import { z } from "zod";
+import fs from "fs";
+import path from "path";
 
 // Initialize Stripe only if secret key is available
 let stripe: Stripe | null = null;
@@ -14,6 +16,31 @@ if (process.env.STRIPE_SECRET_KEY) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  
+  // Image serving API route - using /api prefix to avoid Vite catch-all
+  app.get("/api/images/:filename", (req, res) => {
+    const filename = decodeURIComponent(req.params.filename);
+    const filePath = path.resolve('attached_assets', filename);
+    
+    // Security check
+    if (!filePath.startsWith(path.resolve('attached_assets'))) {
+      return res.status(403).send('Forbidden');
+    }
+    
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).send('Image not found');
+    }
+    
+    // Set content type
+    if (filename.toLowerCase().endsWith('.png')) {
+      res.setHeader('Content-Type', 'image/png');
+    } else if (filename.toLowerCase().endsWith('.jpg') || filename.toLowerCase().endsWith('.jpeg')) {
+      res.setHeader('Content-Type', 'image/jpeg');
+    }
+    
+    res.sendFile(filePath);
+  });
   
   // Artists routes
   app.get("/api/artists", async (req, res) => {
