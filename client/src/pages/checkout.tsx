@@ -38,8 +38,8 @@ export default function Checkout() {
     setTimeout(() => {
       const orderId = Math.floor(Math.random() * 100000);
       toast({
-        title: 'Payment Successful!',
-        description: `Thank you for your purchase! Order #${orderId}`,
+        title: 'Purchase Successful!',
+        description: `Your order has been confirmed! Order #${orderId} - Thank you for supporting our artists!`,
       });
       clearCart();
       setLocation('/products');
@@ -209,12 +209,12 @@ export default function Checkout() {
                   {isProcessing ? (
                     <>
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Processing...
+                      Completing Purchase...
                     </>
                   ) : (
                     <>
                       <CheckCircle className="h-4 w-4 mr-2" />
-                      Complete Order - ${totalPrice.toFixed(2)}
+                      Complete Purchase - ${totalPrice.toFixed(2)}
                     </>
                   )}
                 </Button>
@@ -242,7 +242,7 @@ export default function Checkout() {
                       <p className="text-sm text-canvasco-accent">Qty: {item.quantity}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold">${(item.product.price * item.quantity).toFixed(2)}</p>
+                      <p className="font-semibold">${(Number(item.product.price) * Number(item.quantity)).toFixed(2)}</p>
                     </div>
                   </div>
                 ))}
