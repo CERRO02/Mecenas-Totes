@@ -35,7 +35,7 @@ export default function Header() {
               alt="Mecenas Totes Logo" 
               className="h-8 w-8 object-contain"
             />
-            <span className="font-display font-bold text-xl text-canvasco-primary">Mecenas Totes</span>
+            <span className="font-logo font-bold text-xl text-canvasco-primary">Mecenas Totes</span>
           </Link>
 
           {/* Desktop Navigation */}
