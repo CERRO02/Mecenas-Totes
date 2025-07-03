@@ -36,7 +36,7 @@ export default function Header() {
               className="h-8 w-8 object-contain"
             />
             <span className="font-display font-bold text-xl text-canvasco-primary">
-              Me<span className="text-canvasco-accent">c</span>enas Totes
+              Me<span className="text-canvasco-accent">C</span>enas Totes
             </span>
           </Link>
 
