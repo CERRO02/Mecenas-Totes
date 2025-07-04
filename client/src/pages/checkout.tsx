@@ -34,17 +34,8 @@ export default function Checkout() {
     e.preventDefault();
     setIsProcessing(true);
     
-    // Simulate processing time
-    setTimeout(() => {
-      const orderId = Math.floor(Math.random() * 100000);
-      toast({
-        title: 'Purchase Successful!',
-        description: `Your order has been confirmed! Order #${orderId} - Thank you for supporting our artists!`,
-      });
-      clearCart();
-      setLocation('/products');
-      setIsProcessing(false);
-    }, 2000);
+    // Redirect to Stripe payment page
+    window.location.href = 'https://buy.stripe.com/bJe14m5Xlgebe5zdVp5AR0L';
   };
 
   if (items.length === 0) {
@@ -209,12 +200,12 @@ export default function Checkout() {
                   {isProcessing ? (
                     <>
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Completing Purchase...
+                      Redirecting to Stripe...
                     </>
                   ) : (
                     <>
                       <CheckCircle className="h-4 w-4 mr-2" />
-                      Complete Purchase - ${totalPrice.toFixed(2)}
+                      Pay with Stripe - ${totalPrice.toFixed(2)}
                     </>
                   )}
                 </Button>
@@ -278,10 +269,10 @@ export default function Checkout() {
                 </div>
               </div>
 
-              {/* Demo Notice */}
-              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm text-yellow-800">
-                  <strong>Demo Mode:</strong> This is a demonstration checkout. Any payment details entered will show a success message.
+              {/* Payment Notice */}
+              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-800">
+                  <strong>Secure Payment:</strong> You'll be redirected to Stripe's secure payment page to complete your purchase.
                 </p>
               </div>
             </CardContent>
