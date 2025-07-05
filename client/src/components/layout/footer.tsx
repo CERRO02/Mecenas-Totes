@@ -84,7 +84,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <img 
-                  src={new URL("@assets/11681750959629_.pic_1750959645600.jpg", import.meta.url).href} 
+                  src={new URL("@assets/image_1751684169303.png", import.meta.url).href} 
                   alt="Mecenas Totes Logo" 
                   className="h-8 w-8 object-contain"
                 />
