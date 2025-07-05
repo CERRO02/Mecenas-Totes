@@ -180,7 +180,8 @@ export class MemStorage implements IStorage {
         artistId: 1,
         category: "tote-bag",
         inStock: true,
-        featured: true
+        featured: true,
+        availability: "coming-soon"
       },
       {
         name: "Garden Party Tote",
@@ -192,7 +193,8 @@ export class MemStorage implements IStorage {
         artistId: 2,
         category: "tote-bag",
         inStock: true,
-        featured: true
+        featured: true,
+        availability: "coming-soon"
       },
       {
         name: "Daydream Tote",
@@ -204,7 +206,8 @@ export class MemStorage implements IStorage {
         artistId: 3,
         category: "tote-bag",
         inStock: true,
-        featured: false
+        featured: false,
+        availability: "coming-soon"
       },
       {
         name: "Boxed Like a Fish Tote",
@@ -216,7 +219,8 @@ export class MemStorage implements IStorage {
         artistId: 4,
         category: "tote-bag",
         inStock: true,
-        featured: false
+        featured: false,
+        availability: "available"
       },
       {
         name: "Café July Tote",
@@ -228,7 +232,8 @@ export class MemStorage implements IStorage {
         artistId: 5,
         category: "tote-bag",
         inStock: true,
-        featured: false
+        featured: false,
+        availability: "available"
       },
       {
         name: "Don't Litter This Moment Tote",
@@ -240,7 +245,8 @@ export class MemStorage implements IStorage {
         artistId: 6,
         category: "tote-bag",
         inStock: true,
-        featured: false
+        featured: false,
+        availability: "coming-soon"
       },
       {
         name: "悬空山桂 (Hanging Mountain Osmanthus) Tote",
@@ -252,7 +258,8 @@ export class MemStorage implements IStorage {
         artistId: 7,
         category: "tote-bag",
         inStock: true,
-        featured: false
+        featured: false,
+        availability: "available"
       },
 
 
@@ -354,7 +361,8 @@ export class MemStorage implements IStorage {
       category: insertProduct.category || null,
       inStock: insertProduct.inStock !== undefined ? insertProduct.inStock : null,
       featured: insertProduct.featured !== undefined ? insertProduct.featured : null,
-      images: insertProduct.images ?? []
+      images: insertProduct.images ?? [],
+      availability: insertProduct.availability ?? "available"
     };
     this.products.set(id, product);
     return product;

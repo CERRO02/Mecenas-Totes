@@ -8,9 +8,10 @@ import type { ProductWithArtist } from '@shared/schema';
 
 interface ProductCardProps {
   product: ProductWithArtist;
+  showAddToCart?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, showAddToCart = true }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -90,12 +91,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
           
-          <Button
-            onClick={handleAddToCart}
-            className="bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
-          >
-            Add to Cart
-          </Button>
+          {showAddToCart && (
+            <Button
+              onClick={handleAddToCart}
+              className="bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+            >
+              Add to Cart
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

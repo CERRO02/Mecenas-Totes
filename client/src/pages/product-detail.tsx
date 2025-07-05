@@ -228,15 +228,25 @@ export default function ProductDetail() {
               <span>Style: {product.artist.style}</span>
             </div>
 
-            {/* Add to Cart */}
+            {/* Add to Cart or Coming Soon */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={handleAddToCart}
-                size="lg"
-                className="flex-1 bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
-              >
-                Add to Cart - ${currentPrice.toFixed(2)}
-              </Button>
+              {product.availability === "available" ? (
+                <Button
+                  onClick={handleAddToCart}
+                  size="lg"
+                  className="flex-1 bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+                >
+                  Add to Cart - ${currentPrice.toFixed(2)}
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  disabled
+                  className="flex-1 bg-gray-400 text-white font-semibold cursor-not-allowed"
+                >
+                  Coming Soon
+                </Button>
+              )}
               <Button
                 variant="outline"
                 size="lg"

@@ -54,19 +54,19 @@ export default function Products() {
 
 
 
-      {/* All Products */}
-      <div className="py-16 bg-gray-50">
+      {/* Available Now - Products for Sale */}
+      <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-canvasco-neutral mb-4">Complete Collection</h2>
+            <h2 className="text-3xl font-bold text-canvasco-neutral mb-4">Available Now</h2>
             <p className="text-canvasco-neutral/70 max-w-2xl mx-auto">
-              Browse all our artist collaborations and find your perfect sustainable tote bag
+              Purchase these beautiful artist-designed tote bags for $14.99 each
             </p>
           </div>
           
-          {products && products.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.map((product) => (
+          {products && products.filter(p => p.availability === "available").length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.filter(p => p.availability === "available").map((product) => (
                 <div key={product.id} className="group">
                   <ProductCard product={product} />
                   
@@ -88,9 +88,52 @@ export default function Products() {
             </div>
           ) : (
             <div className="text-center py-16">
-              <p className="text-canvasco-neutral/70">No products available at the moment.</p>
+              <p className="text-canvasco-neutral/70">No products available for purchase at the moment.</p>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Coming Soon - Products Not for Sale */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-canvasco-neutral mb-4">Coming Soon</h2>
+            <p className="text-canvasco-neutral/70 max-w-2xl mx-auto">
+              Beautiful designs in development - stay tuned for their release
+            </p>
+          </div>
+          
+          {products && products.filter(p => p.availability === "coming-soon").length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products.filter(p => p.availability === "coming-soon").map((product) => (
+                <div key={product.id} className="group relative">
+                  <ProductCard product={product} showAddToCart={false} />
+                  
+                  {/* Coming Soon Overlay */}
+                  <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/90 px-4 py-2 rounded-lg shadow-lg">
+                      <p className="text-canvasco-neutral font-semibold">Coming Soon</p>
+                    </div>
+                  </div>
+                  
+                  {/* Artist Link */}
+                  <div className="mt-3 text-center">
+                    <Link href="/artists">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-canvasco-primary hover:text-canvasco-accent"
+                      >
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        View {product.artist.name}'s Profile
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
 

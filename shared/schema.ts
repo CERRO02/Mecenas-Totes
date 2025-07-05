@@ -26,6 +26,7 @@ export const products = pgTable("products", {
   category: text("category").default("tote-bag"),
   inStock: boolean("in_stock").default(true),
   featured: boolean("featured").default(false),
+  availability: text("availability").default("available"), // "available" or "coming-soon"
 });
 
 export const cartItems = pgTable("cart_items", {
