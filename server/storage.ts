@@ -207,12 +207,12 @@ export class MemStorage implements IStorage {
         featured: false
       },
       {
-        name: "Happy Soup Tote",
-        description: "Kimly Nguyen's 'Happy Soup' - a cheerful digital art piece featuring a delicious ramen bowl with playful orange lettering and cute character details.",
+        name: "Boxed Like a Fish Tote",
+        description: "Kimly Nguyen's 'Boxed Like a Fish' - a playful blue digital illustration showcasing her storytelling abilities and creative character design in Procreate.",
         price: "14.99",
         salePrice: null,
-        image: "/api/images/happy-soup.png",
-        images: ["/api/images/happy-soup.png"],
+        image: "/api/images/3_1751684658073.png",
+        images: ["/api/images/3_1751684658073.png", "/api/images/4_1751684664217.png"],
         artistId: 4,
         category: "tote-bag",
         inStock: true,
