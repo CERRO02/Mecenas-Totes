@@ -159,6 +159,9 @@ Changelog:
 → Ready for Stripe integration when user is 18+ or has guardian assistance
 → Company rebranded from CanvasCo to Mecenas Totes across all pages and documentation
 → Updated to transparent Mecenas Totes logo across website and favicon
+→ Added product availability categorization with "Available Now" and "Coming Soon" sections
+→ Set 3 tote bags for sale: Angela's Café July, Kimly's Boxed Fish, Jeffrey's Mountain
+→ Updated meta tags for professional link sharing with proper Mecenas Totes branding
 
 ## User Preferences
 
