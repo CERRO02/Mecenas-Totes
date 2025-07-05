@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'wouter';
 import { Button } from '@/components/ui/button';
@@ -23,6 +24,7 @@ export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const { data: product, isLoading, error } = useQuery<ProductWithArtist>({
     queryKey: ['/api/products', id],
@@ -115,15 +117,39 @@ export default function ProductDetail() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Image */}
+          {/* Product Images */}
           <div className="relative">
-            <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* Main Image */}
+            <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden mb-4">
               <img
-                src={product.image}
+                src={product.images && product.images.length > 0 ? product.images[selectedImageIndex] : product.image}
                 alt={product.name}
                 className="w-full h-full object-contain bg-gray-50"
               />
             </div>
+            
+            {/* Thumbnail Gallery - Show only if multiple images */}
+            {product.images && product.images.length > 1 && (
+              <div className="flex gap-2 justify-center">
+                {product.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                      index === selectedImageIndex 
+                        ? 'border-canvasco-primary shadow-md' 
+                        : 'border-gray-200 hover:border-canvasco-accent'
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${product.name} view ${index + 1}`}
+                      className="w-full h-full object-contain bg-gray-50"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
             
             {/* Badges */}
             <div className="absolute top-4 right-4 flex flex-col gap-2">

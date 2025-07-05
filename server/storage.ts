@@ -176,6 +176,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/carbon-memory-real.png",
+        images: ["/api/images/carbon-memory-real.png"],
         artistId: 1,
         category: "tote-bag",
         inStock: true,
@@ -187,6 +188,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/garden-party.png",
+        images: ["/api/images/garden-party.png"],
         artistId: 2,
         category: "tote-bag",
         inStock: true,
@@ -198,6 +200,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/daydream.png",
+        images: ["/api/images/daydream.png"],
         artistId: 3,
         category: "tote-bag",
         inStock: true,
@@ -209,6 +212,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/happy-soup.png",
+        images: ["/api/images/happy-soup.png"],
         artistId: 4,
         category: "tote-bag",
         inStock: true,
@@ -219,7 +223,8 @@ export class MemStorage implements IStorage {
         description: "Angela Wang's 'Café July' - a detailed architectural drawing of a charming café scene with intricate line work showcasing her love for buildings and cultural spaces.",
         price: "14.99",
         salePrice: null,
-        image: "/api/images/cafe-july.png",
+        image: "/api/images/1_1751684360702.png",
+        images: ["/api/images/1_1751684360702.png", "/api/images/2_1751684371094.png"],
         artistId: 5,
         category: "tote-bag",
         inStock: true,
@@ -231,6 +236,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/dont-litter.png",
+        images: ["/api/images/dont-litter.png"],
         artistId: 6,
         category: "tote-bag",
         inStock: true,
@@ -242,6 +248,7 @@ export class MemStorage implements IStorage {
         price: "14.99",
         salePrice: null,
         image: "/api/images/hanging-mountain.png",
+        images: ["/api/images/hanging-mountain.png"],
         artistId: 7,
         category: "tote-bag",
         inStock: true,
@@ -346,7 +353,8 @@ export class MemStorage implements IStorage {
       salePrice: insertProduct.salePrice || null,
       category: insertProduct.category || null,
       inStock: insertProduct.inStock !== undefined ? insertProduct.inStock : null,
-      featured: insertProduct.featured !== undefined ? insertProduct.featured : null
+      featured: insertProduct.featured !== undefined ? insertProduct.featured : null,
+      images: insertProduct.images ?? []
     };
     this.products.set(id, product);
     return product;
