@@ -34,8 +34,49 @@ export default function Checkout() {
     e.preventDefault();
     setIsProcessing(true);
     
-    // Redirect to Stripe payment page
-    window.location.href = 'https://buy.stripe.com/bJe14m5Xlgebe5zdVp5AR0L';
+    try {
+      // Use demo checkout for testing
+      const sessionId = localStorage.getItem('cartSessionId');
+      if (!sessionId) {
+        throw new Error('Session not found');
+      }
+
+      const response = await fetch('/api/checkout/demo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-session-id': sessionId,
+        },
+        body: JSON.stringify({
+          customerEmail: formData.email,
+          customerName: formData.name,
+          shippingAddress: `${formData.address}, ${formData.city}, ${formData.zipCode}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Checkout failed');
+      }
+
+      const result = await response.json();
+
+      toast({
+        title: "Order Created!",
+        description: "Your demo order has been created successfully.",
+      });
+
+      // Clear cart and redirect to order page
+      clearCart();
+      setLocation(`/order/${result.orderId}`);
+    } catch (error) {
+      toast({
+        title: "Checkout Failed",
+        description: "Something went wrong during checkout. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   if (items.length === 0) {
@@ -92,52 +133,24 @@ export default function Checkout() {
                   />
                 </div>
 
-                {/* Payment Details */}
+                {/* Demo Mode Notice */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h3 className="font-semibold text-blue-800 flex items-center mb-2">
+                    <CheckCircle className="h-5 w-5 mr-2" />
+                    Demo Checkout Mode
+                  </h3>
+                  <p className="text-sm text-blue-700">
+                    This is a demo order system for testing purposes. No payment will be processed. 
+                    Your order will be created and you can track its status in your profile.
+                  </p>
+                </div>
+
+                {/* Customer Information */}
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-canvasco-primary">Card Information</h3>
+                  <h3 className="font-semibold text-canvasco-primary">Customer Information</h3>
                   
                   <div>
-                    <Label htmlFor="cardNumber">Card Number</Label>
-                    <Input
-                      id="cardNumber"
-                      type="text"
-                      value={formData.cardNumber}
-                      onChange={(e) => handleInputChange('cardNumber', e.target.value)}
-                      placeholder="1234 5678 9012 3456"
-                      maxLength={19}
-                      required
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="expiry">Expiry Date</Label>
-                      <Input
-                        id="expiry"
-                        type="text"
-                        value={formData.expiry}
-                        onChange={(e) => handleInputChange('expiry', e.target.value)}
-                        placeholder="MM/YY"
-                        maxLength={5}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="cvc">CVC</Label>
-                      <Input
-                        id="cvc"
-                        type="text"
-                        value={formData.cvc}
-                        onChange={(e) => handleInputChange('cvc', e.target.value)}
-                        placeholder="123"
-                        maxLength={4}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="name">Cardholder Name</Label>
+                    <Label htmlFor="name">Full Name</Label>
                     <Input
                       id="name"
                       type="text"
@@ -200,12 +213,12 @@ export default function Checkout() {
                   {isProcessing ? (
                     <>
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Redirecting to Stripe...
+                      Creating Demo Order...
                     </>
                   ) : (
                     <>
                       <CheckCircle className="h-4 w-4 mr-2" />
-                      Pay with Stripe - ${totalPrice.toFixed(2)}
+                      Create Demo Order - ${totalPrice.toFixed(2)}
                     </>
                   )}
                 </Button>

@@ -345,7 +345,75 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Order confirmation
+  // Demo checkout route (skips payment for testing)
+  app.post("/api/checkout/demo", async (req, res) => {
+    try {
+      const sessionId = req.headers["x-session-id"] as string;
+      const { customerEmail, customerName, shippingAddress } = req.body;
+
+      if (!sessionId) {
+        return res.status(400).json({ message: "Session ID required" });
+      }
+
+      // Get cart items
+      const cartItems = await storage.getCartItems(sessionId);
+      if (cartItems.length === 0) {
+        return res.status(400).json({ message: "Cart is empty" });
+      }
+
+      // Calculate total
+      const totalAmount = cartItems.reduce((total, item) => {
+        const price = parseFloat(item.product.salePrice || item.product.price);
+        return total + (price * item.quantity);
+      }, 0);
+
+      // Get user ID from session if logged in
+      const userId = (req.session as any)?.userId;
+
+      // Create order without payment processing (demo mode)
+      const order = await storage.createOrder({
+        userId: userId || null,
+        customerEmail,
+        customerName,
+        shippingAddress,
+        totalAmount: totalAmount.toFixed(2),
+        status: "confirmed", // Start as confirmed since we're skipping payment
+        stripePaymentIntentId: `demo_order_${Date.now()}`, // Demo payment ID
+      });
+
+      // Add order items
+      const orderItems = cartItems.map(item => ({
+        orderId: order.id,
+        productId: item.productId,
+        quantity: item.quantity,
+        price: item.product.salePrice || item.product.price
+      }));
+
+      await storage.addOrderItems(orderItems);
+
+      // Clear cart
+      await storage.clearCart(sessionId);
+
+      // Simulate order processing updates
+      setTimeout(() => {
+        storage.updateOrderStatus(order.id, "processing", null);
+      }, 5000); // After 5 seconds, update to processing
+
+      setTimeout(() => {
+        storage.updateOrderStatus(order.id, "shipped", `DEMO${Math.random().toString(36).substr(2, 9).toUpperCase()}`);
+      }, 15000); // After 15 seconds, mark as shipped with tracking
+
+      res.json({ 
+        success: true,
+        orderId: order.id,
+        message: "Demo order created successfully!"
+      });
+    } catch (error: any) {
+      res.status(500).json({ message: "Error creating demo order: " + error.message });
+    }
+  });
+
+  // Order confirmation (for real payments)
   app.post("/api/orders/confirm", async (req, res) => {
     try {
       const sessionId = req.headers["x-session-id"] as string;
