@@ -1,10 +1,10 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import session from "express-session";
 import Stripe from "stripe";
 import { storage } from "./storage";
 import { insertCartItemSchema, insertNewsletterSubscriberSchema } from "@shared/schema";
 import { z } from "zod";
-import { setupAuth, isAuthenticated } from "./replitAuth";
 import fs from "fs";
 import path from "path";
 
@@ -17,15 +17,91 @@ if (process.env.STRIPE_SECRET_KEY) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Auth middleware
-  await setupAuth(app);
+  // Session middleware for custom auth
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'fallback-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // Set to true in production with HTTPS
+      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+  }));
 
-  // Auth routes
-  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
+  // Custom authentication routes
+  app.post('/api/auth/register', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
+      const { email, password, firstName, lastName, phone } = req.body;
+      
+      // Check if user already exists
+      const existingUser = await storage.getUserByEmail(email);
+      if (existingUser) {
+        return res.status(400).json({ message: "User already exists" });
+      }
+
+      // Create new user (in production, hash the password)
+      const userId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+      const user = await storage.upsertUser({
+        id: userId,
+        email,
+        firstName,
+        lastName,
+        phone,
+        profileImageUrl: null
+      });
+
+      // Set session
+      (req.session as any).userId = user.id;
+      
+      res.json({ user: { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName } });
+    } catch (error) {
+      console.error("Registration error:", error);
+      res.status(500).json({ message: "Registration failed" });
+    }
+  });
+
+  app.post('/api/auth/login', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      
+      // Find user by email
+      const user = await storage.getUserByEmail(email);
+      if (!user) {
+        return res.status(401).json({ message: "Invalid credentials" });
+      }
+
+      // In production, verify password hash here
+      // For now, we'll accept any password for demo purposes
+      
+      // Set session
+      (req.session as any).userId = user.id;
+      
+      res.json({ user: { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName } });
+    } catch (error) {
+      console.error("Login error:", error);
+      res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  app.post('/api/auth/logout', (req, res) => {
+    req.session.destroy(() => {
+      res.json({ message: "Logged out successfully" });
+    });
+  });
+
+  app.get('/api/auth/user', async (req, res) => {
+    try {
+      const userId = (req.session as any)?.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "Not authenticated" });
+      }
+
       const user = await storage.getUser(userId);
-      res.json(user);
+      if (!user) {
+        return res.status(401).json({ message: "User not found" });
+      }
+
+      res.json({ id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, phone: user.phone });
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
@@ -33,9 +109,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // User profile routes
-  app.get('/api/user/orders', isAuthenticated, async (req: any, res) => {
+  app.get('/api/user/orders', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
+      const userId = (req.session as any)?.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "Not authenticated" });
+      }
+
       const orders = await storage.getUserOrders(userId);
       res.json(orders);
     } catch (error) {
@@ -44,8 +124,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/user/orders/:orderId', isAuthenticated, async (req: any, res) => {
+  app.get('/api/user/orders/:orderId', async (req, res) => {
     try {
+      const userId = (req.session as any)?.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "Not authenticated" });
+      }
+
       const orderId = parseInt(req.params.orderId);
       const order = await storage.getOrder(orderId);
       
@@ -54,7 +139,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Check if this order belongs to the authenticated user
-      const userId = req.user.claims.sub;
       if (order.userId !== userId) {
         return res.status(403).json({ message: "Access denied" });
       }

@@ -97,14 +97,21 @@ export default function Header() {
                       Profile & Orders
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => window.location.href = "/api/logout"}>
+                  <DropdownMenuItem onClick={async () => {
+                    try {
+                      await fetch('/api/auth/logout', { method: 'POST' });
+                      window.location.href = '/';
+                    } catch (error) {
+                      window.location.href = '/';
+                    }
+                  }}>
                     <LogOut className="h-4 w-4 mr-2" />
                     Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button variant="ghost" onClick={() => window.location.href = "/api/login"}>
+              <Button variant="ghost" onClick={() => window.location.href = "/login"}>
                 Login
               </Button>
             )}

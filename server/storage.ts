@@ -27,6 +27,7 @@ import {
 export interface IStorage {
   // Users
   getUser(id: string): Promise<User | undefined>;
+  getUserByEmail(email: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
   getUserOrders(userId: string): Promise<OrderWithItems[]>;
 
@@ -288,6 +289,10 @@ export class MemStorage implements IStorage {
   // Users
   async getUser(id: string): Promise<User | undefined> {
     return this.users.get(id);
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    return Array.from(this.users.values()).find(user => user.email === email);
   }
 
   async upsertUser(userData: UpsertUser): Promise<User> {
