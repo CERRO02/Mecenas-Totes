@@ -101,7 +101,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ message: "User not found" });
       }
 
-      res.json({ id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, phone: user.phone });
+      res.json({ id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, phone: user.phone, role: user.role });
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
@@ -474,6 +474,71 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid email data", errors: error.errors });
       }
       res.status(500).json({ message: "Error subscribing to newsletter: " + error.message });
+    }
+  });
+
+  // Admin middleware
+  const isAdmin = async (req: any, res: any, next: any) => {
+    const userId = req.session?.userId;
+    if (!userId) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    try {
+      const user = await storage.getUser(userId);
+      if (!user || (user.role !== "admin" && user.role !== "supervisor")) {
+        return res.status(403).json({ message: "Admin access required" });
+      }
+      next();
+    } catch (error) {
+      return res.status(500).json({ message: "Error checking admin permissions" });
+    }
+  };
+
+  // Admin routes
+  app.get("/api/admin/orders", isAdmin, async (req, res) => {
+    try {
+      const orders = await storage.getAllOrders();
+      res.json(orders);
+    } catch (error: any) {
+      res.status(500).json({ message: "Error fetching orders: " + error.message });
+    }
+  });
+
+  app.get("/api/admin/users", isAdmin, async (req, res) => {
+    try {
+      const users = await storage.getAllUsers();
+      res.json(users);
+    } catch (error: any) {
+      res.status(500).json({ message: "Error fetching users: " + error.message });
+    }
+  });
+
+  app.put("/api/admin/orders/:id", isAdmin, async (req, res) => {
+    try {
+      const orderId = parseInt(req.params.id);
+      const { status, trackingNumber } = req.body;
+      
+      const order = await storage.updateOrderStatus(orderId, status, trackingNumber);
+      res.json(order);
+    } catch (error: any) {
+      res.status(500).json({ message: "Error updating order: " + error.message });
+    }
+  });
+
+  app.put("/api/admin/users/:id/role", isAdmin, async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const { role } = req.body;
+      
+      if (!["customer", "admin", "supervisor"].includes(role)) {
+        return res.status(400).json({ message: "Invalid role" });
+      }
+      
+      const user = await storage.updateUserRole(userId, role);
+      res.json(user);
+    } catch (error: any) {
+      res.status(500).json({ message: "Error updating user role: " + error.message });
     }
   });
 

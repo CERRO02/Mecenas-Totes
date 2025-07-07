@@ -16,6 +16,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CartSidebar from "@/components/cart-sidebar";
 import { CartProvider } from "@/hooks/use-cart";
+import Admin from "@/pages/admin";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/login" component={Login} />
       <Route path="/profile" component={Profile} />
       <Route path="/order/:orderId" component={OrderDetail} />
+      <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
     </Switch>
   );

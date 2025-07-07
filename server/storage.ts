@@ -62,6 +62,11 @@ export interface IStorage {
   // Newsletter
   subscribeToNewsletter(subscriber: InsertNewsletterSubscriber): Promise<NewsletterSubscriber>;
   getNewsletterSubscribers(): Promise<NewsletterSubscriber[]>;
+
+  // Admin functions
+  getAllOrders(): Promise<OrderWithItems[]>;
+  getAllUsers(): Promise<User[]>;
+  updateUserRole(userId: string, role: string): Promise<User>;
 }
 
 export class MemStorage implements IStorage {
@@ -304,6 +309,7 @@ export class MemStorage implements IStorage {
       lastName: userData.lastName || null,
       phone: userData.phone || null,
       profileImageUrl: userData.profileImageUrl || null,
+      role: userData.role || existingUser?.role || "customer",
       createdAt: existingUser?.createdAt || new Date(),
       updatedAt: new Date(),
     };
@@ -589,6 +595,36 @@ export class MemStorage implements IStorage {
 
   async getNewsletterSubscribers(): Promise<NewsletterSubscriber[]> {
     return Array.from(this.newsletterSubscribers.values()).filter(sub => sub.subscribed);
+  }
+
+  // Admin functions
+  async getAllOrders(): Promise<OrderWithItems[]> {
+    const orders = Array.from(this.orders.values());
+    return Promise.all(orders.map(async order => {
+      const items = Array.from(this.orderItems.values()).filter(item => item.orderId === order.id);
+      const itemsWithProducts = await Promise.all(items.map(async item => {
+        const product = this.products.get(item.productId);
+        const artist = product ? this.artists.get(product.artistId) : undefined;
+        return {
+          ...item,
+          product: { ...product!, artist: artist! }
+        };
+      }));
+      return { ...order, items: itemsWithProducts };
+    }));
+  }
+
+  async getAllUsers(): Promise<User[]> {
+    return Array.from(this.users.values());
+  }
+
+  async updateUserRole(userId: string, role: string): Promise<User> {
+    const user = this.users.get(userId);
+    if (!user) throw new Error("User not found");
+    
+    const updatedUser = { ...user, role, updatedAt: new Date() };
+    this.users.set(userId, updatedUser);
+    return updatedUser;
   }
 }
 

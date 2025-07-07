@@ -6,7 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useCart } from '@/hooks/use-cart';
 import { useAuth } from '@/hooks/useAuth';
-import { Palette, Menu, ShoppingBag, User, LogOut } from 'lucide-react';
+import { Palette, Menu, ShoppingBag, User, LogOut, Settings } from 'lucide-react';
 
 export default function Header() {
   const [location] = useLocation();
@@ -97,6 +97,14 @@ export default function Header() {
                       Profile & Orders
                     </Link>
                   </DropdownMenuItem>
+                  {(user?.role === 'admin' || user?.role === 'supervisor') && (
+                    <DropdownMenuItem asChild>
+                      <Link href="/admin">
+                        <Settings className="h-4 w-4 mr-2" />
+                        Admin Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem onClick={async () => {
                     try {
                       await fetch('/api/auth/logout', { method: 'POST' });
