@@ -55,6 +55,7 @@ export const products = pgTable("products", {
   artistId: integer("artist_id").references(() => artists.id).notNull(),
   category: text("category").default("tote-bag"),
   inStock: boolean("in_stock").default(true),
+  stock: integer("stock").notNull().default(0),
   featured: boolean("featured").default(false),
   availability: text("availability").default("available"), // "available" or "coming-soon"
 });

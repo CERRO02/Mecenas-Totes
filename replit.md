@@ -161,6 +161,10 @@ Changelog:
 ✓ Checkout automatically pre-fills with saved address information
 ✓ Users can save shipping address separately from billing information
 ✓ Admin account cerrochen02@gmail.com automatically gains admin privileges
+✓ Added stock management with all products currently set to 0 stock (out of stock)
+✓ Product cards and detail pages show "Out of Stock" status instead of add to cart button
+✓ Backend validates stock levels before allowing items to be added to cart
+✓ Users see clear out of stock messaging when attempting to purchase unavailable items
 
 → All 7 authentic tote bag designs now display properly in shop and product detail pages
 → Amy Ma's "Carbon Memory" tote features her environmental climate change artwork

@@ -94,9 +94,13 @@ export default function ProductCard({ product, showAddToCart = true }: ProductCa
           {showAddToCart && (
             <Button
               onClick={handleAddToCart}
-              className="bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+              disabled={product.stock === 0}
+              className={product.stock === 0 
+                ? "bg-gray-400 text-gray-600 cursor-not-allowed" 
+                : "bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+              }
             >
-              Add to Cart
+              {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
             </Button>
           )}
         </div>

@@ -317,6 +317,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Session ID required" });
       }
 
+      // Check if product is in stock
+      const product = await storage.getProduct(req.body.productId);
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      
+      if (product.stock === 0) {
+        return res.status(400).json({ message: "This item is currently out of stock" });
+      }
+
       const cartItemData = insertCartItemSchema.parse({
         ...req.body,
         sessionId

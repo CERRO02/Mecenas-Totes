@@ -228,25 +228,19 @@ export default function ProductDetail() {
               <span>Style: {product.artist.style}</span>
             </div>
 
-            {/* Add to Cart or Coming Soon */}
+            {/* Add to Cart or Out of Stock */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {product.availability === "available" ? (
-                <Button
-                  onClick={handleAddToCart}
-                  size="lg"
-                  className="flex-1 bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
-                >
-                  Add to Cart - ${currentPrice.toFixed(2)}
-                </Button>
-              ) : (
-                <Button
-                  size="lg"
-                  disabled
-                  className="flex-1 bg-gray-400 text-white font-semibold cursor-not-allowed"
-                >
-                  Coming Soon
-                </Button>
-              )}
+              <Button
+                onClick={handleAddToCart}
+                size="lg"
+                disabled={product.stock === 0}
+                className={product.stock === 0 
+                  ? "flex-1 bg-gray-400 text-white font-semibold cursor-not-allowed" 
+                  : "flex-1 bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+                }
+              >
+                {product.stock === 0 ? "Out of Stock" : `Add to Cart - $${currentPrice.toFixed(2)}`}
+              </Button>
               <Button
                 variant="outline"
                 size="lg"

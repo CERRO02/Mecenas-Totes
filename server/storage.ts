@@ -195,7 +195,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/9_1751684994303.png", "/api/images/10_1751684998869.png"],
         artistId: 1,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: true,
         availability: "coming-soon"
       },
@@ -208,7 +209,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/7_1751684943884.png", "/api/images/8_1751684947477.png"],
         artistId: 2,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: true,
         availability: "coming-soon"
       },
@@ -221,7 +223,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/11_1751685121994.png", "/api/images/12_1751685131775.png"],
         artistId: 3,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: false,
         availability: "coming-soon"
       },
@@ -234,7 +237,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/3_1751684658073.png", "/api/images/4_1751684664217.png"],
         artistId: 4,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: false,
         availability: "available"
       },
@@ -247,7 +251,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/1_1751684360702.png", "/api/images/2_1751684371094.png"],
         artistId: 5,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: false,
         availability: "available"
       },
@@ -260,7 +265,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/13_1751685146749.png", "/api/images/14_1751685149891.png"],
         artistId: 6,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: false,
         availability: "coming-soon"
       },
@@ -273,7 +279,8 @@ export class MemStorage implements IStorage {
         images: ["/api/images/5_1751684843595.png", "/api/images/6_1751684847264.png"],
         artistId: 7,
         category: "tote-bag",
-        inStock: true,
+        inStock: false,
+        stock: 0,
         featured: false,
         availability: "available"
       },
@@ -444,6 +451,7 @@ export class MemStorage implements IStorage {
       salePrice: insertProduct.salePrice || null,
       category: insertProduct.category || null,
       inStock: insertProduct.inStock !== undefined ? insertProduct.inStock : null,
+      stock: insertProduct.stock !== undefined ? insertProduct.stock : 0,
       featured: insertProduct.featured !== undefined ? insertProduct.featured : null,
       images: insertProduct.images ?? [],
       availability: insertProduct.availability ?? "available"
