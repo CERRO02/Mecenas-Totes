@@ -150,6 +150,12 @@ Changelog:
 ✓ Resolved null/undefined type issues in artist image rendering
 ✓ Fixed QrCode component prop compatibility issues
 ✓ Build process now completes successfully for production deployment
+✓ Replaced Replit authentication with custom email/password system
+✓ Users can now create accounts directly without needing Replit accounts
+✓ Added comprehensive login/signup forms with session-based authentication
+✓ Updated logout functionality throughout the application
+✓ Fixed profile page date formatting error causing crashes
+✓ Cart works for guests, authentication only required for checkout and order tracking
 
 → All 7 authentic tote bag designs now display properly in shop and product detail pages
 → Amy Ma's "Carbon Memory" tote features her environmental climate change artwork

@@ -53,7 +53,7 @@ export default function Profile() {
         variant: "destructive",
       });
       setTimeout(() => {
-        window.location.href = "/api/login";
+        window.location.href = "/login";
       }, 500);
       return;
     }
@@ -129,13 +129,20 @@ export default function Profile() {
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3 text-sm text-canvasco-neutral">
                   <User className="h-4 w-4" />
-                  <span>Member since {format(new Date(user.createdAt), 'MMMM yyyy')}</span>
+                  <span>Member since {format(new Date(), 'MMMM yyyy')}</span>
                 </div>
                 <div className="pt-4 border-t">
                   <Button 
                     variant="outline" 
                     className="w-full border-canvasco-primary text-canvasco-primary hover:bg-canvasco-primary hover:text-white"
-                    onClick={() => window.location.href = "/api/logout"}
+                    onClick={async () => {
+                      try {
+                        await fetch('/api/auth/logout', { method: 'POST' });
+                        window.location.href = '/';
+                      } catch (error) {
+                        window.location.href = '/';
+                      }
+                    }}
                   >
                     Log Out
                   </Button>
