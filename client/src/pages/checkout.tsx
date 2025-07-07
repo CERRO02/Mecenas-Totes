@@ -35,11 +35,29 @@ export default function Checkout() {
     setIsProcessing(true);
     
     try {
+      // Validate required fields
+      if (!formData.email || !formData.name || !formData.address || !formData.city || !formData.zipCode) {
+        toast({
+          title: "Missing Information",
+          description: "Please fill in all required fields.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       // Use demo checkout for testing
       const sessionId = localStorage.getItem('cartSessionId');
       if (!sessionId) {
         throw new Error('Session not found');
       }
+
+      const checkoutData = {
+        customerEmail: formData.email,
+        customerName: formData.name,
+        shippingAddress: `${formData.address}, ${formData.city}, ${formData.zipCode}`,
+      };
+
+      console.log('Checkout data:', checkoutData);
 
       const response = await fetch('/api/checkout/demo', {
         method: 'POST',
@@ -47,15 +65,12 @@ export default function Checkout() {
           'Content-Type': 'application/json',
           'x-session-id': sessionId,
         },
-        body: JSON.stringify({
-          customerEmail: formData.email,
-          customerName: formData.name,
-          shippingAddress: `${formData.address}, ${formData.city}, ${formData.zipCode}`,
-        }),
+        body: JSON.stringify(checkoutData),
       });
 
       if (!response.ok) {
-        throw new Error('Checkout failed');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Checkout failed');
       }
 
       const result = await response.json();
@@ -68,10 +83,11 @@ export default function Checkout() {
       // Clear cart and redirect to order page
       clearCart();
       setLocation(`/order/${result.orderId}`);
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Checkout error:', error);
       toast({
         title: "Checkout Failed",
-        description: "Something went wrong during checkout. Please try again.",
+        description: error.message || "Something went wrong during checkout. Please try again.",
         variant: "destructive",
       });
     } finally {
