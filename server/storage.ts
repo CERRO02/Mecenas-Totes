@@ -29,6 +29,7 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
+  updateUser(id: string, updates: Partial<User>): Promise<User>;
   getUserOrders(userId: string): Promise<OrderWithItems[]>;
 
   // Artists
@@ -310,11 +311,32 @@ export class MemStorage implements IStorage {
       phone: userData.phone || null,
       profileImageUrl: userData.profileImageUrl || null,
       role: userData.role || existingUser?.role || "customer",
+      shippingAddress: userData.shippingAddress || existingUser?.shippingAddress || null,
+      shippingCity: userData.shippingCity || existingUser?.shippingCity || null,
+      shippingState: userData.shippingState || existingUser?.shippingState || null,
+      shippingZipCode: userData.shippingZipCode || existingUser?.shippingZipCode || null,
+      shippingCountry: userData.shippingCountry || existingUser?.shippingCountry || "US",
       createdAt: existingUser?.createdAt || new Date(),
       updatedAt: new Date(),
     };
     this.users.set(userData.id, user);
     return user;
+  }
+
+  async updateUser(id: string, updates: Partial<User>): Promise<User> {
+    const existingUser = this.users.get(id);
+    if (!existingUser) {
+      throw new Error('User not found');
+    }
+
+    const updatedUser: User = {
+      ...existingUser,
+      ...updates,
+      updatedAt: new Date()
+    };
+
+    this.users.set(id, updatedUser);
+    return updatedUser;
   }
 
   async getUserOrders(userId: string): Promise<OrderWithItems[]> {

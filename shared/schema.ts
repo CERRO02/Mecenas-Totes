@@ -22,6 +22,12 @@ export const users = pgTable("users", {
   phone: varchar("phone"),
   profileImageUrl: varchar("profile_image_url"),
   role: varchar("role").notNull().default("customer"), // customer, admin, supervisor
+  // Shipping address fields
+  shippingAddress: varchar("shipping_address"),
+  shippingCity: varchar("shipping_city"),
+  shippingState: varchar("shipping_state"),
+  shippingZipCode: varchar("shipping_zip_code"),
+  shippingCountry: varchar("shipping_country").default("US"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

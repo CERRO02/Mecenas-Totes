@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useCart } from '@/hooks/use-cart';
+import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,10 +9,11 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, CreditCard, Shield, Truck, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CreditCard, Shield, Truck, CheckCircle, MapPin } from 'lucide-react';
 
 export default function Checkout() {
   const { toast } = useToast();
+  const { user } = useAuth();
   const { items, totalPrice, clearCart } = useCart();
   const [, setLocation] = useLocation();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -25,6 +27,20 @@ export default function Checkout() {
     city: '',
     zipCode: ''
   });
+
+  // Auto-fill shipping info from user profile
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        email: user.email || '',
+        name: user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : user.email || '',
+        address: user.shippingAddress || '',
+        city: user.shippingCity || '',
+        zipCode: user.shippingZipCode || ''
+      }));
+    }
+  }, [user]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -165,6 +181,12 @@ export default function Checkout() {
                 {/* Customer Information */}
                 <div className="space-y-4">
                   <h3 className="font-semibold text-canvasco-primary">Customer Information</h3>
+                  {user && user.shippingAddress && (
+                    <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-3 rounded-lg">
+                      <MapPin className="w-4 h-4" />
+                      Using your saved address from profile settings
+                    </div>
+                  )}
                   
                   <div>
                     <Label htmlFor="name">Full Name</Label>

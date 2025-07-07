@@ -156,6 +156,11 @@ Changelog:
 ✓ Updated logout functionality throughout the application
 ✓ Fixed profile page date formatting error causing crashes
 ✓ Cart works for guests, authentication only required for checkout and order tracking
+✓ Added shipping address management to user profiles
+✓ Profile page now includes editable shipping address with US state selection
+✓ Checkout automatically pre-fills with saved address information
+✓ Users can save shipping address separately from billing information
+✓ Admin account cerrochen02@gmail.com automatically gains admin privileges
 
 → All 7 authentic tote bag designs now display properly in shop and product detail pages
 → Amy Ma's "Carbon Memory" tote features her environmental climate change artwork

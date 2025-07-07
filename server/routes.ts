@@ -131,6 +131,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // User profile routes
+  app.patch('/api/user/profile', async (req, res) => {
+    try {
+      const userId = (req.session as any)?.userId;
+      if (!userId) {
+        return res.status(401).json({ message: "Not authenticated" });
+      }
+
+      const updates = req.body;
+      // Remove sensitive fields that shouldn't be updated via this endpoint
+      delete updates.id;
+      delete updates.role;
+      delete updates.createdAt;
+      delete updates.updatedAt;
+
+      const updatedUser = await storage.updateUser(userId, updates);
+      res.json(updatedUser);
+    } catch (error: any) {
+      res.status(500).json({ message: "Error updating profile: " + error.message });
+    }
+  });
+
   app.get('/api/user/orders', async (req, res) => {
     try {
       const userId = (req.session as any)?.userId;
