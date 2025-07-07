@@ -76,7 +76,7 @@ export default function OrderDetail() {
   }, [isAuthenticated, isLoading, toast]);
 
   const { data: order, isLoading: orderLoading, error } = useQuery({
-    queryKey: ["/api/user/orders", orderId],
+    queryKey: [`/api/user/orders/${orderId}`],
     enabled: isAuthenticated && !!orderId,
     retry: (failureCount, error) => {
       if (isUnauthorizedError(error as Error)) {
@@ -146,7 +146,7 @@ export default function OrderDetail() {
               Order #{orderData.id}
             </h1>
             <p className="text-canvasco-neutral">
-              Placed on {format(new Date(orderData.createdAt), 'MMMM dd, yyyy')}
+              Placed on {orderData.createdAt ? format(new Date(orderData.createdAt), 'MMMM dd, yyyy') : 'Recently'}
             </p>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function OrderDetail() {
                           </div>
                           {isCurrent && (
                             <div className="text-sm text-canvasco-neutral">
-                              Updated {format(new Date(orderData.updatedAt), 'MMM dd, yyyy')}
+                              Updated {orderData.updatedAt ? format(new Date(orderData.updatedAt), 'MMM dd, yyyy') : 'Recently'}
                             </div>
                           )}
                         </div>
@@ -285,7 +285,7 @@ export default function OrderDetail() {
                         <span>Order Date</span>
                       </div>
                       <div className="text-canvasco-primary">
-                        {format(new Date(orderData.createdAt), 'MMMM dd, yyyy')}
+                        {orderData.createdAt ? format(new Date(orderData.createdAt), 'MMMM dd, yyyy') : 'Recently'}
                       </div>
                     </div>
                   </div>
