@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useCart } from '@/hooks/use-cart';
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
