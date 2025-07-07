@@ -10,11 +10,12 @@ import ProductDetail from "@/pages/product-detail";
 import Artists from "@/pages/artists";
 import Checkout from "@/pages/checkout";
 import Login from "@/pages/login";
+import Profile from "@/pages/profile";
+import OrderDetail from "@/pages/order-detail";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CartSidebar from "@/components/cart-sidebar";
 import { CartProvider } from "@/hooks/use-cart";
-import { AuthProvider } from "@/hooks/use-auth";
 
 function Router() {
   return (
@@ -25,6 +26,8 @@ function Router() {
       <Route path="/artists" component={Artists} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/login" component={Login} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/order/:orderId" component={OrderDetail} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -34,19 +37,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <AuthProvider>
-          <CartProvider>
-            <div className="min-h-screen bg-canvasco-secondary">
-              <Header />
-              <main>
-                <Router />
-              </main>
-              <Footer />
-              <CartSidebar />
-              <Toaster />
-            </div>
-          </CartProvider>
-        </AuthProvider>
+        <CartProvider>
+          <div className="min-h-screen bg-canvasco-secondary">
+            <Header />
+            <main>
+              <Router />
+            </main>
+            <Footer />
+            <CartSidebar />
+            <Toaster />
+          </div>
+        </CartProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

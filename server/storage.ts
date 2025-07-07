@@ -5,6 +5,8 @@ import {
   orders, 
   orderItems, 
   newsletterSubscribers,
+  type User,
+  type UpsertUser,
   type Artist, 
   type Product, 
   type CartItem, 
@@ -23,6 +25,11 @@ import {
 } from "@shared/schema";
 
 export interface IStorage {
+  // Users
+  getUser(id: string): Promise<User | undefined>;
+  upsertUser(user: UpsertUser): Promise<User>;
+  getUserOrders(userId: string): Promise<OrderWithItems[]>;
+
   // Artists
   getArtists(): Promise<Artist[]>;
   getArtist(id: number): Promise<Artist | undefined>;
@@ -48,7 +55,7 @@ export interface IStorage {
   createOrder(order: InsertOrder): Promise<Order>;
   getOrder(id: number): Promise<OrderWithItems | undefined>;
   getOrderByPaymentIntent(paymentIntentId: string): Promise<Order | undefined>;
-  updateOrderStatus(id: number, status: string): Promise<Order>;
+  updateOrderStatus(id: number, status: string, trackingNumber?: string): Promise<Order>;
   addOrderItems(items: InsertOrderItem[]): Promise<OrderItem[]>;
 
   // Newsletter
@@ -57,6 +64,7 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
+  private users: Map<string, User>;
   private artists: Map<number, Artist>;
   private products: Map<number, Product>;
   private cartItems: Map<number, CartItem>;
@@ -66,6 +74,7 @@ export class MemStorage implements IStorage {
   private currentId: { [key: string]: number };
 
   constructor() {
+    this.users = new Map();
     this.artists = new Map();
     this.products = new Map();
     this.cartItems = new Map();
@@ -276,6 +285,48 @@ export class MemStorage implements IStorage {
     }
   }
 
+  // Users
+  async getUser(id: string): Promise<User | undefined> {
+    return this.users.get(id);
+  }
+
+  async upsertUser(userData: UpsertUser): Promise<User> {
+    const existingUser = this.users.get(userData.id);
+    const user: User = {
+      id: userData.id,
+      email: userData.email || null,
+      firstName: userData.firstName || null,
+      lastName: userData.lastName || null,
+      phone: userData.phone || null,
+      profileImageUrl: userData.profileImageUrl || null,
+      createdAt: existingUser?.createdAt || new Date(),
+      updatedAt: new Date(),
+    };
+    this.users.set(userData.id, user);
+    return user;
+  }
+
+  async getUserOrders(userId: string): Promise<OrderWithItems[]> {
+    const userOrders = Array.from(this.orders.values()).filter(order => order.userId === userId);
+    const ordersWithItems = [];
+    
+    for (const order of userOrders) {
+      const orderItems = Array.from(this.orderItems.values()).filter(item => item.orderId === order.id);
+      const itemsWithProducts = [];
+      
+      for (const item of orderItems) {
+        const product = await this.getProduct(item.productId);
+        if (product) {
+          itemsWithProducts.push({ ...item, product });
+        }
+      }
+      
+      ordersWithItems.push({ ...order, items: itemsWithProducts });
+    }
+    
+    return ordersWithItems.sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime());
+  }
+
   // Artists
   async getArtists(): Promise<Artist[]> {
     return Array.from(this.artists.values());
@@ -446,7 +497,12 @@ export class MemStorage implements IStorage {
       id,
       status: insertOrder.status || "pending",
       customerEmail: insertOrder.customerEmail || null,
-      createdAt: new Date()
+      customerName: insertOrder.customerName || null,
+      shippingAddress: insertOrder.shippingAddress || null,
+      trackingNumber: insertOrder.trackingNumber || null,
+      userId: insertOrder.userId || null,
+      createdAt: new Date(),
+      updatedAt: new Date()
     };
     this.orders.set(id, order);
     return order;
@@ -475,11 +531,15 @@ export class MemStorage implements IStorage {
     );
   }
 
-  async updateOrderStatus(id: number, status: string): Promise<Order> {
+  async updateOrderStatus(id: number, status: string, trackingNumber?: string): Promise<Order> {
     const order = this.orders.get(id);
     if (!order) throw new Error("Order not found");
     
     order.status = status;
+    order.updatedAt = new Date();
+    if (trackingNumber) {
+      order.trackingNumber = trackingNumber;
+    }
     this.orders.set(id, order);
     return order;
   }

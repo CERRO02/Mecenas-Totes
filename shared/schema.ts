@@ -1,6 +1,29 @@
-import { pgTable, text, serial, integer, boolean, decimal, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, decimal, timestamp, varchar, jsonb, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+
+// Session storage table for authentication
+export const sessions = pgTable(
+  "sessions",
+  {
+    sid: varchar("sid").primaryKey(),
+    sess: jsonb("sess").notNull(),
+    expire: timestamp("expire").notNull(),
+  },
+  (table) => [index("IDX_session_expire").on(table.expire)],
+);
+
+// User storage table for authentication
+export const users = pgTable("users", {
+  id: varchar("id").primaryKey().notNull(),
+  email: varchar("email").unique(),
+  firstName: varchar("first_name"),
+  lastName: varchar("last_name"),
+  phone: varchar("phone"),
+  profileImageUrl: varchar("profile_image_url"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
 
 export const artists = pgTable("artists", {
   id: serial("id").primaryKey(),
@@ -40,11 +63,16 @@ export const cartItems = pgTable("cart_items", {
 export const orders = pgTable("orders", {
   id: serial("id").primaryKey(),
   sessionId: text("session_id").notNull(),
+  userId: varchar("user_id").references(() => users.id),
   stripePaymentIntentId: text("stripe_payment_intent_id").notNull(),
-  status: text("status").notNull().default("pending"),
+  status: text("status").notNull().default("pending"), // pending, processing, shipped, delivered, cancelled
   totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
   customerEmail: text("customer_email"),
+  customerName: text("customer_name"),
+  shippingAddress: text("shipping_address"),
+  trackingNumber: text("tracking_number"),
   createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const orderItems = pgTable("order_items", {
@@ -63,14 +91,16 @@ export const newsletterSubscribers = pgTable("newsletter_subscribers", {
 });
 
 // Insert schemas
+export const insertUserSchema = createInsertSchema(users).omit({ createdAt: true, updatedAt: true });
 export const insertArtistSchema = createInsertSchema(artists).omit({ id: true });
 export const insertProductSchema = createInsertSchema(products).omit({ id: true });
 export const insertCartItemSchema = createInsertSchema(cartItems).omit({ id: true, createdAt: true });
-export const insertOrderSchema = createInsertSchema(orders).omit({ id: true, createdAt: true });
+export const insertOrderSchema = createInsertSchema(orders).omit({ id: true, createdAt: true, updatedAt: true });
 export const insertOrderItemSchema = createInsertSchema(orderItems).omit({ id: true });
 export const insertNewsletterSubscriberSchema = createInsertSchema(newsletterSubscribers).omit({ id: true, createdAt: true });
 
 // Types
+export type User = typeof users.$inferSelect;
 export type Artist = typeof artists.$inferSelect;
 export type Product = typeof products.$inferSelect;
 export type CartItem = typeof cartItems.$inferSelect;
@@ -78,6 +108,8 @@ export type Order = typeof orders.$inferSelect;
 export type OrderItem = typeof orderItems.$inferSelect;
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
 
+export type UpsertUser = typeof users.$inferInsert;
+export type InsertUser = z.infer<typeof insertUserSchema>;
 export type InsertArtist = z.infer<typeof insertArtistSchema>;
 export type InsertProduct = z.infer<typeof insertProductSchema>;
 export type InsertCartItem = z.infer<typeof insertCartItemSchema>;
