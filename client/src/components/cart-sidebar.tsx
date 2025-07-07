@@ -148,14 +148,7 @@ export default function CartSidebar() {
                   onClick={handleCheckout}
                   className="w-full bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
                 >
-                  {isAuthenticated ? (
-                    "Proceed to Checkout"
-                  ) : (
-                    <>
-                      <User className="h-4 w-4 mr-2" />
-                      Login to Checkout
-                    </>
-                  )}
+                  Proceed to Checkout
                 </Button>
                 
                 <Button
