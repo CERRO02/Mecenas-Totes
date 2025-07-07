@@ -88,7 +88,7 @@ export default function Footer() {
                   alt="Mecenas Totes Logo" 
                   className="h-8 w-8 object-contain"
                 />
-                <span className="font-display font-bold text-xl">Mecenas Totes</span>
+                <span className="font-logo font-bold text-xl">Mecenas Totes</span>
               </div>
               <p className="text-gray-300 mb-4">
                 Connecting art, sustainability, and community through beautiful eco-friendly tote bags.
