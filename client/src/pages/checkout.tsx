@@ -46,7 +46,8 @@ export default function Checkout() {
       }
 
       // Use demo checkout for testing
-      const sessionId = localStorage.getItem('cartSessionId');
+      const sessionId = localStorage.getItem('cart-session-id');
+      console.log('Session ID from localStorage:', sessionId);
       if (!sessionId) {
         throw new Error('Session not found');
       }
