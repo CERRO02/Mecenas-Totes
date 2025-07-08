@@ -136,7 +136,7 @@ export class MemStorage implements IStorage {
       {
         name: "Kimly Nguyen",
         bio: "Kimly Nguyen is a self-taught digital artist from the class of 2027. She has been drawing using Procreate since 2020, but has also experimented with various traditional media, including colored pencils, markers, and different paints. She resonated with digital art because it was precise, eclectic, and allowed her to capture stories and people in her style. Outside of art, she plays volleyball, crochets, does nail art, and plays video games.",
-        location: "Massachusetts",
+        location: "Lexington, MA",
         style: "Digital Art, Traditional Media, Storytelling",
         website: "https://instagram.com/kibblessssssss",
         featured: false,
@@ -166,7 +166,7 @@ export class MemStorage implements IStorage {
       {
         name: "Jeffrey Liu",
         bio: "Jeffrey Liu is an emerging artist exploring themes of nature and tranquility through traditional landscape painting techniques. His work captures serene mountain scenes with careful attention to atmosphere and natural beauty.",
-        location: "Massachusetts",
+        location: "Lexington, MA",
         style: "Traditional Landscape, Chinese Art, Nature Scenes",
         website: null,
         featured: false,
