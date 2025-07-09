@@ -47,7 +47,7 @@ export default function Home() {
             
             <div className="relative">
               <img 
-                src="/api/images/hero-tote.jpg" 
+                src="/api/images/new-hero-image.jpg" 
                 alt="Eco-friendly tote bags with artistic designs" 
                 className="rounded-3xl shadow-2xl w-full"
               />
