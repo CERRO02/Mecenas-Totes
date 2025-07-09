@@ -94,8 +94,10 @@ export default function Footer() {
                 Connecting art, sustainability, and community through beautiful eco-friendly tote bags.
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon" className="text-gray-300 hover:text-canvasco-accent">
-                  <Instagram className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="text-gray-300 hover:text-canvasco-accent" asChild>
+                  <a href="https://www.instagram.com/mecenas.totes/" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-5 w-5" />
+                  </a>
                 </Button>
                 <Button variant="ghost" size="icon" className="text-gray-300 hover:text-canvasco-accent">
                   <Facebook className="h-5 w-5" />

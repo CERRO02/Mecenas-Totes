@@ -180,6 +180,11 @@ Changelog:
 ✓ Updated social media sharing meta tags to use new tote bag hero image
 ✓ Open Graph and Twitter cards now display Jeffrey Liu's mountain landscape tote bag
 ✓ Social media previews properly showcase actual product instead of old placeholder image
+✓ Added Instagram link to footer connecting to @mecenas.totes account
+✓ Removed "New" badges from Carbon Memory and Garden Party coming soon products
+✓ Updated pricing to show red crossed-out original prices ($17.99 for most, $19.99 for larger designs)
+✓ Removed "Sale" badges while keeping discount pricing visible through crossed-out prices
+✓ Shortened Jeffrey Liu's product name to "悬空山桂" for consistent card heights
 
 ## User Preferences
 
