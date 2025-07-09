@@ -197,7 +197,7 @@ export class MemStorage implements IStorage {
         category: "tote-bag",
         inStock: false,
         stock: 0,
-        featured: true,
+        featured: false,
         availability: "coming-soon"
       },
       {
@@ -211,7 +211,7 @@ export class MemStorage implements IStorage {
         category: "tote-bag",
         inStock: false,
         stock: 0,
-        featured: true,
+        featured: false,
         availability: "coming-soon"
       },
       {
