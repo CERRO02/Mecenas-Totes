@@ -85,7 +85,7 @@ export default function ProductCard({ product, showAddToCart = true }: ProductCa
               ${currentPrice.toFixed(2)}
             </span>
             {originalPrice && (
-              <span className="text-canvasco-neutral line-through text-sm">
+              <span className="text-red-500 line-through text-sm">
                 ${originalPrice.toFixed(2)}
               </span>
             )}

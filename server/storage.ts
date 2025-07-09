@@ -189,7 +189,7 @@ export class MemStorage implements IStorage {
       {
         name: "Carbon Memory",
         description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/9_1751684994303.png",
         images: ["/api/images/9_1751684994303.png", "/api/images/10_1751684998869.png"],
@@ -203,7 +203,7 @@ export class MemStorage implements IStorage {
       {
         name: "Garden Party",
         description: "Emma Xu's 'Garden Party' - a whimsical celebration of nature featuring adorable woodland creatures, flowers, and natural elements in vibrant colors.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/7_1751684943884.png",
         images: ["/api/images/7_1751684943884.png", "/api/images/8_1751684947477.png"],
@@ -217,7 +217,7 @@ export class MemStorage implements IStorage {
       {
         name: "Daydream",
         description: "Alexis Zhang's 'Daydream' - an introspective piece exploring human consciousness with swirling blues and a contemplative figure surrounded by dreamlike elements.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/11_1751685121994.png",
         images: ["/api/images/11_1751685121994.png", "/api/images/12_1751685131775.png"],
@@ -231,7 +231,7 @@ export class MemStorage implements IStorage {
       {
         name: "Boxed Like a Fish",
         description: "Kimly Nguyen's 'Boxed Like a Fish' - a playful blue digital illustration showcasing her storytelling abilities and creative character design in Procreate.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/3_1751684658073.png",
         images: ["/api/images/3_1751684658073.png", "/api/images/4_1751684664217.png"],
@@ -245,7 +245,7 @@ export class MemStorage implements IStorage {
       {
         name: "Café July",
         description: "Angela Wang's 'Café July' - a detailed architectural drawing of a charming café scene with intricate line work showcasing her love for buildings and cultural spaces.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/1_1751684360702.png",
         images: ["/api/images/1_1751684360702.png", "/api/images/2_1751684371094.png"],
@@ -259,7 +259,7 @@ export class MemStorage implements IStorage {
       {
         name: "Don't Litter This Moment",
         description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/13_1751685146749.png",
         images: ["/api/images/13_1751685146749.png", "/api/images/14_1751685149891.png"],
@@ -273,7 +273,7 @@ export class MemStorage implements IStorage {
       {
         name: "悬空山桂 (Hanging Mountain Osmanthus)",
         description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
-        price: "19.99",
+        price: "17.99",
         salePrice: "14.99",
         image: "/api/images/5_1751684843595.png",
         images: ["/api/images/5_1751684843595.png", "/api/images/6_1751684847264.png"],
