@@ -189,7 +189,7 @@ export class MemStorage implements IStorage {
       {
         name: "Carbon Memory",
         description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
-        price: "17.99",
+        price: "19.99",
         salePrice: "14.99",
         image: "/api/images/9_1751684994303.png",
         images: ["/api/images/9_1751684994303.png", "/api/images/10_1751684998869.png"],
@@ -217,7 +217,7 @@ export class MemStorage implements IStorage {
       {
         name: "Daydream",
         description: "Alexis Zhang's 'Daydream' - an introspective piece exploring human consciousness with swirling blues and a contemplative figure surrounded by dreamlike elements.",
-        price: "17.99",
+        price: "19.99",
         salePrice: "14.99",
         image: "/api/images/11_1751685121994.png",
         images: ["/api/images/11_1751685121994.png", "/api/images/12_1751685131775.png"],
