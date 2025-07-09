@@ -259,7 +259,7 @@ export class MemStorage implements IStorage {
       {
         name: "Don't Litter This Moment",
         description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
-        price: "17.99",
+        price: "19.99",
         salePrice: "14.99",
         image: "/api/images/13_1751685146749.png",
         images: ["/api/images/13_1751685146749.png", "/api/images/14_1751685149891.png"],
