@@ -177,6 +177,9 @@ Changelog:
 → Added product availability categorization with "Available Now" and "Coming Soon" sections
 → Set 3 tote bags for sale: Angela's Café July, Kimly's Boxed Fish, Jeffrey's Mountain
 → Updated meta tags for professional link sharing with proper Mecenas Totes branding
+✓ Updated social media sharing meta tags to use new tote bag hero image
+✓ Open Graph and Twitter cards now display Jeffrey Liu's mountain landscape tote bag
+✓ Social media previews properly showcase actual product instead of old placeholder image
 
 ## User Preferences
 
