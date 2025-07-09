@@ -271,7 +271,7 @@ export class MemStorage implements IStorage {
         availability: "coming-soon"
       },
       {
-        name: "悬空山桂 (Hanging Mountain Osmanthus)",
+        name: "悬空山桂",
         description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
         price: "17.99",
         salePrice: "14.99",
