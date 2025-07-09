@@ -42,11 +42,6 @@ export default function ProductCard({ product, showAddToCart = true }: ProductCa
               New
             </Badge>
           )}
-          {isOnSale && (
-            <Badge variant="destructive">
-              Sale
-            </Badge>
-          )}
         </div>
 
         {/* Quick View Button */}
