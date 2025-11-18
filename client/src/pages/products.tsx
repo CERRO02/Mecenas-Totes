@@ -1,29 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { ExternalLink, User, ShoppingBag } from "lucide-react";
-import ProductCard from "@/components/product-card";
+import ProductCard from "@/components/product-card-static";
 import { Button } from "@/components/ui/button";
-import type { ProductWithArtist } from "@shared/schema";
+import { getProducts, type ProductWithArtist } from "@/data/static-data";
 
 export default function Products() {
-  const { data: products, isLoading } = useQuery<ProductWithArtist[]>({
-    queryKey: ["/api/products"],
-  });
-
-
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="animate-spin w-8 h-8 border-4 border-canvasco-primary border-t-transparent rounded-full mx-auto" />
-            <p className="mt-4 text-canvasco-neutral/70">Loading our beautiful tote bag collection...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const products = getProducts();
 
   return (
     <div className="min-h-screen bg-white">

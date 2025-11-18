@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { 
   MapPin, 
@@ -7,36 +6,10 @@ import {
   Mail,
   ExternalLink
 } from 'lucide-react';
-import type { Artist } from '@shared/schema';
+import { getArtists, type Artist } from '@/data/static-data';
 
 export default function Artists() {
-  const { data: artists, isLoading } = useQuery<Artist[]>({
-    queryKey: ['/api/artists'],
-  });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-2/3 mb-8"></div>
-            <div className="bg-gray-200 rounded-lg h-96"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!artists || artists.length === 0) {
-    return (
-      <div className="min-h-screen bg-white py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl font-bold text-canvasco-neutral">Artist information not available</h1>
-        </div>
-      </div>
-    );
-  }
+  const artists = getArtists();
 
   return (
     <div className="min-h-screen bg-white py-8">
@@ -125,19 +98,12 @@ export default function Artists() {
                         </span>
                       </div>
                     )}
-                    <div className="flex items-center space-x-2 text-canvasco-neutral/70">
-                      <Mail className="h-4 w-4 text-canvasco-accent" />
-                      <span className="text-sm">
-                        {artist.name === 'Amy Ma' ? 'amymaz1hui@gmail.com' : 
-                         artist.name === 'Emma Xu' ? 'emmaxu0513@gmail.com' : 
-                         artist.name === 'Alexis Zhang' ? 'alexis.zhang2010@gmail.com' :
-                         artist.name === 'Kimly Nguyen' ? 'kimlynguyen801@gmail.com' :
-                         artist.name === 'Angela Wang' ? 'angelavveivvei@gmail.com' :
-                         artist.name === 'Lucas Dai' ? 'lucasldai09@gmail.com' :
-                         artist.name === 'Jeffrey Liu' ? 'Contact via Instagram' :
-                         'Contact available'}
-                      </span>
-                    </div>
+                    {artist.email && (
+                      <div className="flex items-center space-x-2 text-canvasco-neutral/70">
+                        <Mail className="h-4 w-4 text-canvasco-accent" />
+                        <span className="text-sm">{artist.email}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Action Buttons */}

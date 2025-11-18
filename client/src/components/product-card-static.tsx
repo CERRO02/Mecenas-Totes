@@ -1,0 +1,101 @@
+import { Link } from 'wouter';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Eye, QrCode } from 'lucide-react';
+import type { ProductWithArtist } from '@/data/static-data';
+
+interface ProductCardProps {
+  product: ProductWithArtist;
+  showAddToCart?: boolean;
+}
+
+export default function ProductCard({ product, showAddToCart = true }: ProductCardProps) {
+  const currentPrice = parseFloat(product.salePrice || product.price);
+  const originalPrice = product.salePrice ? parseFloat(product.price) : null;
+
+  return (
+    <Card className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+      <div className="relative">
+        <Link href={`/products/${product.id}`}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-64 object-contain bg-gray-50 group-hover:scale-105 transition-transform duration-300"
+          />
+        </Link>
+        
+        {/* Badges */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2">
+          {product.featured && (
+            <Badge className="bg-canvasco-primary text-white">
+              New
+            </Badge>
+          )}
+        </div>
+
+        {/* Quick View Button */}
+        <Link href={`/products/${product.id}`}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-none h-full w-full"
+          >
+            <Eye className="h-6 w-6 text-white" />
+          </Button>
+        </Link>
+      </div>
+
+      <CardContent className="p-6">
+        <div className="flex items-center mb-2">
+          <span className="text-sm text-canvasco-accent font-semibold">
+            {product.artist.name}
+          </span>
+          <QrCode className="h-4 w-4 text-canvasco-neutral ml-2" />
+        </div>
+        
+        <Link href={`/products/${product.id}`} className="group">
+          <h3 className="font-display text-lg font-semibold text-canvasco-primary mb-2 group-hover:text-canvasco-accent transition-colors">
+            {product.name}
+          </h3>
+        </Link>
+        
+        <p className="text-canvasco-neutral text-sm mb-4 line-clamp-2">
+          {product.description}
+        </p>
+        
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-xl text-canvasco-primary">
+              ${currentPrice.toFixed(2)}
+            </span>
+            {originalPrice && (
+              <span className="text-red-500 line-through text-sm">
+                ${originalPrice.toFixed(2)}
+              </span>
+            )}
+          </div>
+          
+          {showAddToCart && (
+            <Button
+              disabled={product.stock === 0}
+              className={product.stock === 0 
+                ? "bg-gray-400 text-gray-600 cursor-not-allowed" 
+                : "bg-canvasco-primary hover:bg-canvasco-primary/90 text-white font-semibold"
+              }
+              asChild={product.stock !== 0}
+            >
+              {product.stock === 0 ? (
+                "Out of Stock"
+              ) : (
+                <a href="https://www.instagram.com/mecenas.totes/" target="_blank" rel="noopener noreferrer">
+                  Contact to Buy
+                </a>
+              )}
+            </Button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
