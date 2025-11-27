@@ -41,7 +41,7 @@ export const artists: Artist[] = [
     style: "Digital & Traditional Arts, Environmental Storytelling",
     website: "https://instagram.com/amy.art617",
     featured: true,
-    image: "/api/images/amy-ma.jpg",
+    image: "/images/amy-ma.jpg",
     email: "amymaz1hui@gmail.com"
   },
   {
@@ -52,7 +52,7 @@ export const artists: Artist[] = [
     style: "Nature Art, Color & Value Focus",
     website: "https://instagram.com/lentil.beans.art",
     featured: false,
-    image: "/api/images/emma-xu.jpg",
+    image: "/images/emma-xu.jpg",
     email: "emmaxu0513@gmail.com"
   },
   {
@@ -63,7 +63,7 @@ export const artists: Artist[] = [
     style: "Multidisciplinary Art, Human Nature Studies",
     website: "https://instagram.com/azhang.artt",
     featured: false,
-    image: "/api/images/alexis-zhang.jpg",
+    image: "/images/alexis-zhang.jpg",
     email: "alexis.zhang2010@gmail.com"
   },
   {
@@ -74,7 +74,7 @@ export const artists: Artist[] = [
     style: "Digital Art, Traditional Media, Storytelling",
     website: "https://instagram.com/kibblessssssssss",
     featured: false,
-    image: "/api/images/kimly-nguyen.jpg",
+    image: "/images/kimly-nguyen.jpg",
     email: "kimlynguyen801@gmail.com"
   },
   {
@@ -85,7 +85,7 @@ export const artists: Artist[] = [
     style: "Architecture, Objects & Scenery, Cultural Expression",
     website: "https://instagram.com/alegnaaa.art",
     featured: false,
-    image: "/api/images/angela-wang.png",
+    image: "/images/angela-wang.png",
     email: "angelavveivvei@gmail.com"
   },
   {
@@ -96,7 +96,7 @@ export const artists: Artist[] = [
     style: "Colored Pencil, Graphite, Oil Paint, Watercolor",
     website: "https://instagram.com/lucassdai",
     featured: false,
-    image: "/api/images/lucas-dai.jpg",
+    image: "/images/lucas-dai.jpg",
     email: "lucasldai09@gmail.com"
   },
   {
@@ -107,7 +107,7 @@ export const artists: Artist[] = [
     style: "Traditional Landscape, Chinese Art, Nature Scenes",
     website: null,
     featured: false,
-    image: "/api/images/jeffrey-liu.jpg",
+    image: "/images/jeffrey-liu.jpg",
     email: "Contact via Instagram"
   }
 ];
@@ -119,8 +119,8 @@ const products: Product[] = [
     description: "Amy Ma's 'Carbon Memory' - a powerful environmental piece exploring climate change through digital art featuring futuristic characters and swirling energy.",
     price: "19.99",
     salePrice: "16.99",
-    image: "/api/images/9_1751684994303.png",
-    images: ["/api/images/9_1751684994303.png", "/api/images/10_1751684998869.png"],
+    image: "/images/9_1751684994303.png",
+    images: ["/images/9_1751684994303.png", "/images/10_1751684998869.png"],
     artistId: 1,
     category: "tote-bag",
     inStock: false,
@@ -134,8 +134,8 @@ const products: Product[] = [
     description: "Emma Xu's 'Garden Party' - a whimsical celebration of nature featuring adorable woodland creatures, flowers, and natural elements in vibrant colors.",
     price: "17.99",
     salePrice: "14.99",
-    image: "/api/images/7_1751684943884.png",
-    images: ["/api/images/7_1751684943884.png", "/api/images/8_1751684947477.png"],
+    image: "/images/7_1751684943884.png",
+    images: ["/images/7_1751684943884.png", "/images/8_1751684947477.png"],
     artistId: 2,
     category: "tote-bag",
     inStock: false,
@@ -149,8 +149,8 @@ const products: Product[] = [
     description: "Alexis Zhang's 'Daydream' - an introspective piece exploring human consciousness with swirling blues and a contemplative figure surrounded by dreamlike elements.",
     price: "19.99",
     salePrice: "16.99",
-    image: "/api/images/11_1751685121994.png",
-    images: ["/api/images/11_1751685121994.png", "/api/images/12_1751685131775.png"],
+    image: "/images/11_1751685121994.png",
+    images: ["/images/11_1751685121994.png", "/images/12_1751685131775.png"],
     artistId: 3,
     category: "tote-bag",
     inStock: false,
@@ -164,8 +164,8 @@ const products: Product[] = [
     description: "Kimly Nguyen's 'Boxed Like a Fish' - a playful blue digital illustration showcasing her storytelling abilities and creative character design in Procreate.",
     price: "17.99",
     salePrice: "14.99",
-    image: "/api/images/3_1751684658073.png",
-    images: ["/api/images/3_1751684658073.png", "/api/images/4_1751684664217.png"],
+    image: "/images/3_1751684658073.png",
+    images: ["/images/3_1751684658073.png", "/images/4_1751684664217.png"],
     artistId: 4,
     category: "tote-bag",
     inStock: false,
@@ -179,8 +179,8 @@ const products: Product[] = [
     description: "Angela Wang's 'Café July' - a detailed architectural drawing of a charming café scene with intricate line work showcasing her love for buildings and cultural spaces.",
     price: "17.99",
     salePrice: "14.99",
-    image: "/api/images/1_1751684360702.png",
-    images: ["/api/images/1_1751684360702.png", "/api/images/2_1751684371094.png"],
+    image: "/images/1_1751684360702.png",
+    images: ["/images/1_1751684360702.png", "/images/2_1751684371094.png"],
     artistId: 5,
     category: "tote-bag",
     inStock: false,
@@ -194,8 +194,8 @@ const products: Product[] = [
     description: "Lucas Dai's 'Don't Litter This Moment' - a beautiful environmental message featuring a serene lake scene painted in his signature watercolor style, promoting nature conservation.",
     price: "19.99",
     salePrice: "16.99",
-    image: "/api/images/13_1751685146749.png",
-    images: ["/api/images/13_1751685146749.png", "/api/images/14_1751685149891.png"],
+    image: "/images/13_1751685146749.png",
+    images: ["/images/13_1751685146749.png", "/images/14_1751685149891.png"],
     artistId: 6,
     category: "tote-bag",
     inStock: false,
@@ -209,8 +209,8 @@ const products: Product[] = [
     description: "Jeffrey Liu's traditional Chinese landscape painting featuring misty mountains and natural scenery with Chinese calligraphy, showcasing his mastery of classical techniques.",
     price: "17.99",
     salePrice: "14.99",
-    image: "/api/images/5_1751684843595.png",
-    images: ["/api/images/5_1751684843595.png", "/api/images/6_1751684847264.png"],
+    image: "/images/5_1751684843595.png",
+    images: ["/images/5_1751684843595.png", "/images/6_1751684847264.png"],
     artistId: 7,
     category: "tote-bag",
     inStock: false,
